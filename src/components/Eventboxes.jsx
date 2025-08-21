@@ -5,7 +5,7 @@ const Eventboxes = () => {
     const events = [
       {
         title: "Blues Night",
-        image1: Band1,
+        image1: Band2,
         image2: Band1,
         date: ["DO", "22", "Jan"],
         description: "Andy Egert",
