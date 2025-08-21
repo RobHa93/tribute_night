@@ -137,7 +137,7 @@ const MainContent = () => {
                 Mindestalter: <b className="text-red-600">16 Jahre</b>
               </p>
               <p className="text-lg text-justify hyphens-auto text-gray-600 mt-4">
-                Ab 10 Jahren ist der Eintritt in Begleitung eines Erwachsenen möglich.
+                Ab 10 Jahren ist der Eintritt in Begleitung eines Erwachsenen möglich. 
               </p>
             </div>
           </div>
