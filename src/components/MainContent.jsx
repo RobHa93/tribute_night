@@ -5,19 +5,18 @@ const MainContent = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   
   const sliderImages = [
-    "src/assets/img/image.jpg",
-    "src/assets/img/1585603256.jpg",
-    "src/assets/img/Gitarre2.PNG",
-    "src/assets/img/1536064883.jpg",
-    "src/assets/img/1585603256 (2).jpg",
-    "src/assets/img/Gitarre3.PNG",
-    "src/assets/img/Band1.PNG",
-    "src/assets/img/Band2.PNG",
-    "src/assets/img/1585603256 (1).jpg",
-    "src/assets/img/1585603257.jpg",
-    "src/assets/img/1585603258.jpg",
-    "src/assets/img/DJ1.PNG",
-
+    "/images/image.jpg",
+    "/images/1585603256.jpg", 
+    "/images/Gitarre2.PNG",
+    "/images/1536064883.jpg",
+    "/images/1585603256 (2).jpg",
+    "/images/Gitarre3.PNG",
+    "/images/Band1.PNG",
+    "/images/Band2.PNG",
+    "/images/1585603256 (1).jpg",
+    "/images/1585603257.jpg",
+    "/images/1585603258.jpg",
+    "/images/DJ1.PNG",
   ];
 
   // Auto-Slider alle 5 Sekunden

@@ -64,7 +64,7 @@ const UeberUns = () => {
       <div className="bg-stone-200 relative h-[70vh] flex items-center justify-center">
         <h1 className='text-white text-4xl text-center absolute z-10 font-bold'>Über Uns</h1>
         <img
-          src="src/assets/img/DJ1.PNG"
+          src="/images/DJ1.PNG"
           alt="Tribute Night Team"
           className="w-full h-full object-cover"
         />

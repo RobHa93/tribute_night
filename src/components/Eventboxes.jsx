@@ -2,24 +2,24 @@ const Eventboxes = () => {
     const events = [
       {
         title: "Blues Night",
-        image1: "src/assets/img/Band1.PNG",
-        image2: "src/assets/img/Band1.PNG",
+        image1: "/images/Band1.PNG",
+        image2: "/images/Band1.PNG",
         date: ["DO", "22", "Jan"],
         description: "Andy Egert",
         description2: "Lucky Wüthrich",
       },
       {
         title: "Rock Night",
-        image1: "src/assets/img/Band1.PNG",
-        image2: "src/assets/img/Band1.PNG",
+        image1: "/images/Band1.PNG",
+        image2: "/images/Band1.PNG",
         date: ["FR", "23", "Jan"],
         description: "live/wire",
         description2: "Shades of Purple",
       },
       {
         title: "Rock Night",
-        image1: "src/assets/img/Band1.PNG",
-        image2: "src/assets/img/Band1.PNG",
+        image1: "/images/Band1.PNG",
+        image2: "/images/Band1.PNG",
         date: ["SA", "24", "Jan"],
         description: "CRAZY DIAMOND",
         description2: "WE2 – THE U2 TRIBUTE",
@@ -74,4 +74,3 @@ const Eventboxes = () => {
   };
   
   export default Eventboxes;
-  

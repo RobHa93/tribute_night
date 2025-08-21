@@ -10,7 +10,7 @@ const Anreise = () => {
       <div className="bg-stone-200 relative h-[70vh] flex items-center justify-center">
         <h1 className='text-4xl text-center absolute z-10 text-white font-bold'>Anreise</h1>
         <img
-          src="src\assets\img\1585603256 (1).jpg"
+          src="/images/1585603256 (1).jpg"
           alt="Anreise Header"
           className="w-full h-full object-cover"
         />

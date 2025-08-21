@@ -17,7 +17,7 @@ const Sponsoren = () => {
       {/* Sponsoren-Sektion mit Hintergrundbild */}
       <div
         className="relative h-[70vh] flex items-center justify-center bg-fill bg-center"
-        style={{ backgroundImage: `url('src/assets/img/Unbenannt.PNG')` }}
+        style={{ backgroundImage: `url('/images/Unbenannt.PNG')` }}
       >
         {/* Overlay für bessere Lesbarkeit */}
         <div className="absolute inset-0 bg-black/50"></div>
