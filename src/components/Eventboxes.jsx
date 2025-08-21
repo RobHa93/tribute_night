@@ -1,25 +1,28 @@
+import Band1 from '../assets/img/Band1.PNG'
+import Band2 from '../assets/img/Band2.PNG'
+
 const Eventboxes = () => {
     const events = [
       {
         title: "Blues Night",
-        image1: "/images/Band1.PNG",
-        image2: "/images/Band1.PNG",
+        image1: Band1,
+        image2: Band1,
         date: ["DO", "22", "Jan"],
         description: "Andy Egert",
         description2: "Lucky Wüthrich",
       },
       {
         title: "Rock Night",
-        image1: "/images/Band1.PNG",
-        image2: "/images/Band1.PNG",
+        image1: Band1,
+        image2: Band2,
         date: ["FR", "23", "Jan"],
         description: "live/wire",
         description2: "Shades of Purple",
       },
       {
         title: "Rock Night",
-        image1: "/images/Band1.PNG",
-        image2: "/images/Band1.PNG",
+        image1: Band2,
+        image2: Band1,
         date: ["SA", "24", "Jan"],
         description: "CRAZY DIAMOND",
         description2: "WE2 – THE U2 TRIBUTE",

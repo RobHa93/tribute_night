@@ -1,5 +1,6 @@
 import Navbar from '../components/Navbar'
-import Footer from '../components/Footer';
+import Footer from '../components/Footer'
+import kontaktImage from '../assets/img/1585603256 (1).jpg'
 
 const Kontakt = () => {
   return (
@@ -10,7 +11,7 @@ const Kontakt = () => {
       <div className="bg-stone-100 relative h-[70vh] flex items-center justify-center">
         <h1 className='text-4xl text-center absolute z-10 text-white font-bold'>Kontakt</h1>
         <img
-          src="/images/1585603256 (1).jpg"
+          src={kontaktImage}
           alt="Kontakt Header"
           className="w-full h-full object-cover"
         />

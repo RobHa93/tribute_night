@@ -1,6 +1,7 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { useState, useEffect, useRef } from 'react'
+import djImage from '../assets/img/DJ1.PNG'
 
 const CounterAnimation = ({ target, label, suffix = "" }) => {
   const [count, setCount] = useState(0);
@@ -64,7 +65,7 @@ const UeberUns = () => {
       <div className="bg-stone-200 relative h-[70vh] flex items-center justify-center">
         <h1 className='text-white text-4xl text-center absolute z-10 font-bold'>Über Uns</h1>
         <img
-          src="/images/DJ1.PNG"
+          src={djImage}
           alt="Tribute Night Team"
           className="w-full h-full object-cover"
         />

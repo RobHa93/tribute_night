@@ -1,5 +1,6 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import sponsorenImage from '../assets/img/Unbenannt.PNG'
 
 const Sponsoren = () => {
   // Beispiel-Sponsoren-Daten
@@ -17,7 +18,7 @@ const Sponsoren = () => {
       {/* Sponsoren-Sektion mit Hintergrundbild */}
       <div
         className="relative h-[70vh] flex items-center justify-center bg-fill bg-center"
-        style={{ backgroundImage: `url('/images/Unbenannt.PNG')` }}
+        style={{ backgroundImage: `url(${sponsorenImage})` }}
       >
         {/* Overlay für bessere Lesbarkeit */}
         <div className="absolute inset-0 bg-black/50"></div>

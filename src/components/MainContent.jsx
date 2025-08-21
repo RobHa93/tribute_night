@@ -1,22 +1,37 @@
 import { useState, useEffect } from 'react';
 
+// Alle Bilder importieren
+import image1 from '../assets/img/image.jpg';
+import image2 from '../assets/img/1585603256.jpg';
+import gitarre2 from '../assets/img/Gitarre2.PNG';
+import image3 from '../assets/img/1536064883.jpg';
+import image4 from '../assets/img/1585603256 (2).jpg';
+import gitarre3 from '../assets/img/Gitarre3.PNG';
+import band1 from '../assets/img/Band1.PNG';
+import band2 from '../assets/img/Band2.PNG';
+import image5 from '../assets/img/1585603256 (1).jpg';
+import image6 from '../assets/img/1585603257.jpg';
+import image7 from '../assets/img/1585603258.jpg';
+import dj1 from '../assets/img/DJ1.PNG';
+import timetable from '../assets/img/timetable.png';
+
 const MainContent = () => {
   // Slider Logik
   const [currentSlide, setCurrentSlide] = useState(0);
   
   const sliderImages = [
-    "/images/image.jpg",
-    "/images/1585603256.jpg", 
-    "/images/Gitarre2.PNG",
-    "/images/1536064883.jpg",
-    "/images/1585603256 (2).jpg",
-    "/images/Gitarre3.PNG",
-    "/images/Band1.PNG",
-    "/images/Band2.PNG",
-    "/images/1585603256 (1).jpg",
-    "/images/1585603257.jpg",
-    "/images/1585603258.jpg",
-    "/images/DJ1.PNG",
+    image1,
+    image2,
+    gitarre2,
+    image3,
+    image4,
+    gitarre3,
+    band1,
+    band2,
+    image5,
+    image6,
+    image7,
+    dj1,
   ];
 
   // Auto-Slider alle 5 Sekunden
@@ -61,7 +76,7 @@ const MainContent = () => {
       <div className="bg-stone-200 py-16 flex justify-center">
         <img
           className="w-auto h-[800px]"
-          src="src/assets/img/timetable.png"
+          src={timetable}
           alt="timetable tribute night"
         />
       </div>
