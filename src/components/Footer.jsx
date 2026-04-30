@@ -2,92 +2,125 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <>
-      {/* Scroll to Top Button */}
-      <div className="bg-stone-200 py-8 flex justify-end px-6">
-        <button
-          onClick={scrollToTop}
-          className="bg-violet-500 hover:bg-violet-600 hover:scale-105 px-6 py-3 rounded-lg flex items-center space-x-2 transition-all duration-300 group text-white font-semibold"
-        >
-          <span className="text-lg group-hover:-translate-y-1 transition-transform duration-300">↑</span>
-        </button>
-      </div>
+    <footer className="bg-night-950 border-t border-night-700">
+      {/* Upper footer */}
+      <div className="max-w-7xl mx-auto px-6 py-14">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
 
-      <footer className="bg-gray-800 text-white py-8">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
-            
-            {/* Navigation Links */}
-            <div className="flex flex-wrap justify-center md:justify-start space-x-4">
-              <Link to="/" className="hover:text-blue-400 transition-colors duration-300 text-sm">
-                Home
-              </Link>
-              <Link to="/anreise" className="hover:text-blue-400 transition-colors duration-300 text-sm">
-                Anreise
-              </Link>
-              <Link to="/ueber-uns" className="hover:text-blue-400 transition-colors duration-300 text-sm">
-                Über uns
-              </Link>
-              <Link to="/sponsoren" className="hover:text-blue-400 transition-colors duration-300 text-sm">
-                Sponsoren
-              </Link>
-              <Link to="/kontakt" className="hover:text-blue-400 transition-colors duration-300 text-sm">
-                Kontakt
-              </Link>
+          {/* Brand + tagline */}
+          <div>
+            <Link to="/" className="inline-flex items-baseline gap-0 hover:opacity-80 transition-opacity duration-300">
+              <span className="font-bebas text-3xl tracking-wider text-white">TRIBUTE</span>
+              <span className="font-bebas text-3xl tracking-wider text-blues ml-1.5">NIGHT</span>
+            </Link>
+            <p className="font-body text-xs tracking-[0.3em] uppercase text-zinc-600 mt-1 mb-2">Am Rhy · Laufenburg</p>
+            <p className="font-body text-zinc-500 text-sm leading-relaxed max-w-xs">
+              Blues & Rock über drei unvergessliche Abende. <br />
+              Turnhalle Laufenburg · 22.–24. Jan 2026
+            </p>
+            <a
+              href="https://www.eventfrog.ch"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 inline-flex items-center gap-2 bg-blues hover:bg-blues-light text-black font-display font-bold text-xs tracking-widest uppercase px-5 py-2.5 rounded transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blues/30"
+            >
+              🎟 Tickets kaufen
+            </a>
+          </div>
+
+          {/* Navigation */}
+          <div>
+            <p className="font-display text-xs tracking-[0.2em] uppercase text-zinc-500 mb-4">Navigation</p>
+            <ul className="space-y-2">
+              {[
+                { to: '/', label: 'Home' },
+                { to: '/anreise', label: 'Anreise' },
+                { to: '/ueber-uns', label: 'Über uns' },
+                { to: '/sponsoren', label: 'Sponsoren' },
+                { to: '/kontakt', label: 'Kontakt' },
+              ].map(({ to, label }) => (
+                <li key={to}>
+                  <Link
+                    to={to}
+                    className="font-body text-sm text-zinc-400 hover:text-whites hover:text-white transition-colors duration-300"
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Kontakt + Social */}
+          <div>
+            <p className="font-display text-xs tracking-[0.2em] uppercase text-zinc-500 mb-4">Kontakt</p>
+            <div className="space-y-2 mb-5">
+              <p className="font-body text-sm text-zinc-400">
+                <span className="text-white font-medium">Keropower</span>
+              </p>
+              <a
+                href="mailto:keropower@bluewin.ch"
+                className="font-body text-sm text-zinc-400 hover:text-blues transition-colors duration-300 block"
+              >
+                keropower@bluewin.ch
+              </a>
+              <a
+                href="tel:+41763724477"
+                className="font-body text-sm text-zinc-400 hover:text-blues transition-colors duration-300 block"
+              >
+                +41 76 372 44 77
+              </a>
             </div>
 
-            {/* Kontakt & Copyright */}
-            <div className="text-center text-sm">
-              <div className="mb-2">
-                <strong>KONTAKT: Keropower</strong>
-              </div>
-              <div className="mb-2 text-gray-400">
-                E-Mail: keropower@bluewin.ch
-              </div>
-              <div className="text-gray-400">
-                © 2025 Tribute Night Laufenburg
-              </div>
-            </div>
-
-            {/* Social Media & Tickets */}
-            <div className="flex justify-center md:justify-end items-center space-x-4">
-              {/* Social Media Icons */}
-              <a href="#" className="text-white hover:text-blue-400 hover:scale-110 transition-all duration-300">
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            {/* Social */}
+            <div className="flex gap-3">
+              <a
+                href="#"
+                className="w-9 h-9 rounded border border-night-600 flex items-center justify-center text-zinc-400 hover:text-white hover:border-blues hover:text-blues transition-all duration-300"
+                aria-label="Facebook"
+              >
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                 </svg>
               </a>
-              <a href="#" className="text-white hover:text-pink-400 hover:scale-110 transition-all duration-300">
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <a
+                href="#"
+                className="w-9 h-9 rounded border border-night-600 flex items-center justify-center text-zinc-400 hover:text-white hover:border-blues hover:text-blues transition-all duration-300"
+                aria-label="Instagram"
+              >
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                 </svg>
               </a>
-              
-              {/* Ticket CTA */}
-              <a 
-                href="https://www.eventfrog.ch" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="bg-violet-500 hover:bg-violet-600 hover:scale-105 px-4 py-2 rounded-lg flex items-center space-x-2 transition-all duration-300 group"
-              >
-                <svg className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M22.5 8.25a.75.75 0 00-.75-.75h-2.69L17.22 5.63a.75.75 0 00-1.06 1.06L17.69 8.25H6.31l1.53-1.56a.75.75 0 00-1.06-1.06L4.94 7.5H2.25a.75.75 0 00-.75.75v7.5c0 .414.336.75.75.75h2.69l1.84 1.87a.75.75 0 001.06-1.06L6.31 15.75h11.38l-1.53 1.56a.75.75 0 101.06 1.06l1.84-1.87h2.69a.75.75 0 00.75-.75v-7.5z"/>
-                </svg>
-                <span className="text-sm font-semibold group-hover:translate-x-1 transition-transform duration-300">Tickets</span>
-              </a>
             </div>
-
           </div>
+
         </div>
-      </footer>
-    </>
+      </div>
+
+      {/* Bottom bar */}
+      <div className="border-t border-night-700">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="font-body text-xs text-zinc-600">
+            © 2026 Tribute Night Laufenburg – Keropower
+          </p>
+          <button
+            onClick={scrollToTop}
+            className="inline-flex items-center gap-2 font-body text-xs text-zinc-500 hover:text-blues transition-colors duration-300"
+            aria-label="Zurück nach oben"
+          >
+            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+            </svg>
+            Nach oben
+          </button>
+        </div>
+      </div>
+    </footer>
   );
 };
 

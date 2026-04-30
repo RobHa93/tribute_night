@@ -4,160 +4,124 @@ import kontaktImage from '../assets/img/1585603256 (1).jpg'
 
 const Kontakt = () => {
   return (
-    <div>
+    <div className="min-h-screen bg-night-900">
       <Navbar />
-      
-      {/* Header mit Bild */}
-      <div className="bg-stone-100 relative h-[70vh] flex items-center justify-center">
-        <h1 className='text-4xl text-center absolute z-10 text-white font-bold'>Kontakt</h1>
-        <img
-          src={kontaktImage}
-          alt="Kontakt Header"
-          className="w-full h-full object-cover"
-        />
-        {/* Overlay für bessere Lesbarkeit */}
-        <div className="absolute inset-0 bg-black/40"></div>
+
+      {/* Hero */}
+      <div className="relative h-[60vh] flex items-end pb-16 justify-center overflow-hidden">
+        <img src={kontaktImage} alt="Kontakt" className="absolute inset-0 object-cover w-full h-full" />
+        <div className="absolute inset-0 bg-gradient-to-t from-night-900 via-black/50 to-black/30" />
+        <div className="relative z-10 px-4 text-center">
+          <p className="font-display text-blues tracking-[0.3em] text-xs uppercase mb-2">Wir freuen uns auf dich</p>
+          <h1 className="text-5xl font-bold tracking-wide text-white font-display md:text-6xl">Kontakt</h1>
+        </div>
       </div>
 
-      {/* Kontakt Content */}
-      <div className="bg-stone-200 py-16">
-        <div className="max-w-6xl mx-auto px-4 py-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            
-            {/* Kontakt Informationen */}
-            <div className="space-y-8">
-              <div>
-                <h2 className="text-3xl font-bold mb-6">Kontakt & Informationen</h2>
-                <div className="space-y-4">
-                  <div className="flex items-start space-x-3">
-                    <div className="text-blue-600 mt-1">
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-lg">Veranstalter</h3>
-                      <p className="text-gray-600">Keropower</p>
-                    </div>
-                  </div>
+      {/* Content */}
+      <section className="px-4 py-20">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
-                  <div className="flex items-start space-x-3">
-                    <div className="text-blue-600 mt-1">
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
-                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-lg">E-Mail</h3>
-                      <a href="mailto:keropower@bluewin.ch" className="text-blue-600 hover:text-blue-800">
-                        keropower@bluewin.ch
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start space-x-3">
-                    <div className="text-blue-600 mt-1">
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"/>
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-lg">Veranstaltungsort</h3>
-                      <p className="text-gray-600">
-                        Turnhalle Laufenburg<br />
-                        Laufenburg, Schweiz
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start space-x-3">
-                    <div className="text-blue-600 mt-1">
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd"/>
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-lg">Event Termine</h3>
-                      <div className="text-gray-600">
-                        <p>Donnerstag: 19:30 - 23:00 Uhr</p>
-                        <p>Freitag: 20:00 - 02:00 Uhr</p>
-                        <p>Samstag: 19:30 - 02:00 Uhr</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+            {/* Info cards */}
+            <div className="space-y-4">
+              <div className="mb-8">
+                <p className="font-display text-zinc-500 tracking-[0.3em] text-xs uppercase mb-2">Infos</p>
+                <h2 className="font-display font-bold text-3xl text-white tracking-wide">Kontakt & Informationen</h2>
               </div>
 
-              {/* Rollstuhl Info */}
-              <div className="bg-blue-50 p-6 rounded-lg">
-                <h3 className="font-semibold text-lg mb-2">Barrierefreiheit</h3>
-                <p className="text-gray-600 mb-2">
+              {[
+                {
+                  label: 'Veranstalter',
+                  value: 'Keropower',
+                  icon: <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"/></svg>,
+                },
+                {
+                  label: 'E-Mail',
+                  value: <a href="mailto:keropower@bluewin.ch" className="text-blues hover:text-blues-light transition-colors">keropower@bluewin.ch</a>,
+                  icon: <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>,
+                },
+                {
+                  label: 'Veranstaltungsort',
+                  value: 'Turnhalle Laufenburg, Schweiz',
+                  icon: <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"/></svg>,
+                },
+                {
+                  label: 'Event Termine',
+                  value: (
+                    <div className="space-y-1 font-body text-sm text-zinc-300">
+                      <p>Donnerstag: 19:30 – 23:00 Uhr</p>
+                      <p>Freitag: 20:00 – 02:00 Uhr</p>
+                      <p>Samstag: 19:30 – 02:00 Uhr</p>
+                    </div>
+                  ),
+                  icon: <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd"/></svg>,
+                },
+              ].map(({ label, value, icon }) => (
+                <div key={label} className="flex gap-4 p-5 bg-night-800 border border-night-600 rounded-xl">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-blues/10 border border-blues/30 text-blues flex items-center justify-center">
+                    {icon}
+                  </div>
+                  <div>
+                    <p className="font-display text-zinc-500 text-xs tracking-widest uppercase mb-1">{label}</p>
+                    {typeof value === 'string'
+                      ? <p className="font-body text-white text-sm">{value}</p>
+                      : value}
+                  </div>
+                </div>
+              ))}
+
+              {/* Barrierefreiheit */}
+              <div className="p-5 bg-night-800 border border-night-600 border-l-4 border-l-blues rounded-xl">
+                <p className="font-display text-blues text-xs tracking-widest uppercase mb-2">Barrierefreiheit</p>
+                <p className="font-body text-zinc-300 text-sm leading-relaxed mb-3">
                   Rollstuhlplätze sind ausschliesslich über den Veranstalter buchbar.
                 </p>
-                <p className="font-semibold text-blue-600">📞 +41 76 372 44 77</p>
+                <p className="font-display text-blues font-semibold tracking-wide text-sm">+41 76 372 44 77</p>
               </div>
             </div>
 
-            {/* Kontakt Formular */}
-            <div className="bg-gray-50 p-8 rounded-lg">
-              <h2 className="text-2xl font-bold mb-6">Schreib uns eine Nachricht</h2>
-              <form className="space-y-4">
+            {/* Form */}
+            <div className="bg-night-800 border border-night-600 border-t-2 border-t-blues rounded-xl p-8">
+              <p className="font-display text-zinc-500 tracking-[0.3em] text-xs uppercase mb-2">Schreib uns</p>
+              <h2 className="font-display font-bold text-2xl text-white tracking-wide mb-8">Schreib uns eine Nachricht</h2>
+              <form className="space-y-5">
+                {[
+                  { id: 'name', label: 'Name *', type: 'text', placeholder: 'Dein Name' },
+                  { id: 'email', label: 'E-Mail *', type: 'email', placeholder: 'deine.email@beispiel.ch' },
+                  { id: 'betreff', label: 'Betreff', type: 'text', placeholder: 'Worum geht es?' },
+                ].map(({ id, label, type, placeholder }) => (
+                  <div key={id}>
+                    <label htmlFor={id} className="block font-display text-zinc-400 text-xs tracking-widest uppercase mb-2">{label}</label>
+                    <input
+                      id={id}
+                      type={type}
+                      placeholder={placeholder}
+                      className="w-full bg-night-700 border border-night-600 text-white placeholder-zinc-600 font-body text-sm px-4 py-3 rounded-lg focus:outline-none focus:border-blues/60 focus:ring-1 focus:ring-blues/30 transition-colors"
+                    />
+                  </div>
+                ))}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Name *
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Dein Name"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    E-Mail *
-                  </label>
-                  <input
-                    type="email"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="deine.email@beispiel.ch"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Betreff
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Worum geht es?"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Nachricht *
-                  </label>
+                  <label htmlFor="nachricht" className="block font-display text-zinc-400 text-xs tracking-widest uppercase mb-2">Nachricht *</label>
                   <textarea
+                    id="nachricht"
                     rows="5"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     placeholder="Deine Nachricht..."
-                  ></textarea>
+                    className="w-full bg-night-700 border border-night-600 text-white placeholder-zinc-600 font-body text-sm px-4 py-3 rounded-lg focus:outline-none focus:border-blues/60 focus:ring-1 focus:ring-blues/30 transition-colors resize-none"
+                  />
                 </div>
-
                 <button
                   type="submit"
-                  className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors duration-300 font-semibold"
+                  className="w-full bg-blues hover:bg-blues-light text-black font-display font-bold tracking-widest uppercase py-4 rounded transition-all duration-300 hover:shadow-lg hover:shadow-blues/30"
                 >
                   Nachricht senden
                 </button>
               </form>
             </div>
+
           </div>
         </div>
-      </div>
+      </section>
+
       <Footer />
     </div>
   )

@@ -4,164 +4,135 @@ import anreiseImage from '../assets/img/1585603256 (1).jpg'
 
 const Anreise = () => {
   return (
-    <div>
+    <div className="min-h-screen bg-night-900">
       <Navbar />
-      
-      {/* Header mit Bild */}
-      <div className="bg-stone-200 relative h-[70vh] flex items-center justify-center">
-        <h1 className='text-4xl text-center absolute z-10 text-white font-bold'>Anreise</h1>
-        <img
-          src={anreiseImage}
-          alt="Anreise Header"
-          className="w-full h-full object-cover"
-        />
-        {/* Overlay für bessere Lesbarkeit */}
-        <div className="absolute inset-0 bg-black/40"></div>
+
+      {/* Page Hero */}
+      <div className="relative h-[60vh] flex items-end pb-16 justify-center overflow-hidden">
+        <img src={anreiseImage} alt="Anreise Header" className="absolute inset-0 object-cover w-full h-full" />
+        <div className="absolute inset-0 bg-gradient-to-t from-night-900 via-black/50 to-black/30" />
+        <div className="relative z-10 px-4 text-center">
+          <p className="font-display text-blues tracking-[0.3em] text-xs uppercase mb-2">So kommst du zu uns</p>
+          <h1 className="text-5xl font-bold tracking-wide text-white font-display md:text-6xl">Anreise</h1>
+        </div>
       </div>
 
-      {/* Anreise Content */}
-      <div className="bg-stone-200 py-16">
-        <div className="max-w-6xl mx-auto px-4">
-          
-          {/* Einführungstext */}
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-6">So findest du zu uns</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Die Tribute Night findet in der Turnhalle Laufenburg statt. 
-              Hier findest du alle wichtigen Informationen für deine Anreise.
-            </p>
-          </div>
-        <br />
-        <br />
-          {/* Anreise Optionen */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-            
+      {/* Intro */}
+      <section className="px-4 py-16">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="mb-4 text-3xl font-bold tracking-wide text-white font-display">So findest du zu uns</h2>
+          <p className="text-base leading-relaxed font-body text-zinc-400">
+            Die Tribute Night findet in der Turnhalle Laufenburg statt.
+            Hier findest du alle wichtigen Informationen für deine Anreise.
+          </p>
+        </div>
+      </section>
+
+      <div className="px-6 mx-auto max-w-7xl">
+        <div className="h-px bg-gradient-to-r from-transparent via-night-600 to-transparent" />
+      </div>
+
+      {/* Anreise Optionen */}
+      <section className="px-4 py-20">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 gap-6 mb-10 lg:grid-cols-2">
+
             {/* Mit dem Fahrzeug */}
-            <div className="bg-gray-50 rounded-lg p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <div className="flex items-center mb-6">
-                <div className="bg-blue-600 p-3 rounded-full mr-4">
-                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <div className="p-8 border border-t-2 bg-night-800 border-night-600 border-t-blues rounded-xl">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 border rounded-full bg-blues/10 border-blues/30">
+                  <svg className="w-6 h-6 text-blues" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M18.92 2.01C18.72 1.42 18.16 1 17.5 1h-11C5.84 1 5.28 1.42 5.08 2.01L3 8v13c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1V8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-800">Mit dem Fahrzeug</h3>
+                <h3 className="text-2xl font-bold tracking-wide text-white font-display">Mit dem Fahrzeug</h3>
               </div>
-              
-              <div className="space-y-4">
-                <p className="text-gray-600 mb-4">
-                  <strong>Wichtiger Hinweis:</strong> Die Parkmöglichkeiten in Laufenburg sind beschränkt.
-                </p>
-                
-                <div className="space-y-3">
-                  <div className="flex items-start space-x-3">
-                    <span className="text-blue-600 mt-1">📍</span>
+              <p className="mb-5 text-sm leading-relaxed font-body text-zinc-400">
+                <strong className="text-white">Wichtiger Hinweis:</strong> Die Parkmöglichkeiten in Laufenburg sind beschränkt.
+              </p>
+              <ul className="space-y-4">
+                {[
+                  { name: 'Parkplatz beim oberen Stadttor', detail: 'Begrenzte Anzahl Parkplätze verfügbar' },
+                  { name: 'Parkhaus Restaurant Warteck', detail: 'Überdachte Parkmöglichkeit' },
+                  { name: 'Parkhaus Stadthalle', detail: 'Weitere Parkmöglichkeit' },
+                ].map(({ name, detail }) => (
+                  <li key={name} className="flex items-start gap-3">
+                    <span className="flex-shrink-0 w-2 h-2 mt-1 rounded-full bg-blues" />
                     <div>
-                      <h4 className="font-semibold">Parkplatz beim oberen Stadttor</h4>
-                      <p className="text-gray-600 text-sm">Begrenzte Anzahl Parkplätze verfügbar</p>
+                      <p className="text-sm font-semibold text-white font-body">{name}</p>
+                      <p className="text-xs font-body text-zinc-500">{detail}</p>
                     </div>
-                  </div>
-                  <br />
-                  
-                  <div className="flex items-start space-x-3">
-                    <span className="text-blue-600 mt-1">📍</span>
-                    <div>
-                      <h4 className="font-semibold">Parkhaus Restaurant Warteck</h4>
-                      <p className="text-gray-600 text-sm">Überdachte Parkmöglichkeit</p>
-                    </div>
-                  </div>
-                  <br />
-                  
-                  <div className="flex items-start space-x-3">
-                    <span className="text-blue-600 mt-1">📍</span>
-                    <div>
-                      <h4 className="font-semibold">Parkhaus Stadthalle</h4>
-                      <p className="text-gray-600 text-sm">Weitere Parkmöglichkeit</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                  </li>
+                ))}
+              </ul>
             </div>
-          
-            {/* Öffentlicher Verkehr */}
-            <div className="bg-gray-50 rounded-lg p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <div className="flex items-center mb-6">
-                <div className="bg-green-600 p-3 rounded-full mr-4">
-                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+
+            {/* ÖV */}
+            <div className="p-8 border border-t-2 bg-night-800 border-night-600 border-t-blues rounded-xl">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 border rounded-full bg-blues/10 border-blues/30">
+                  <svg className="w-6 h-6 text-blues" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2c-4 0-8 .5-8 4v9.5C4 17.43 5.57 19 7.5 19L6 20.5v.5h2.23l2-2H14l2 2h2v-.5L16.5 19c1.93 0 3.5-1.57 3.5-3.5V6c0-3.5-3.58-4-8-4zM7.5 17c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm3.5-7H6V7h5v3zm5.5 7c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-7h-5V7h5v3z"/>
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-800">Öffentlicher Verkehr</h3>
+                <h3 className="text-2xl font-bold tracking-wide text-white font-display">Öffentlicher Verkehr</h3>
               </div>
-              
-              <div className="space-y-4">
-                <p className="text-gray-600 mb-4">
-                  <strong>Empfehlung:</strong> Wir empfehlen die Anreise mit öffentlichen Verkehrsmitteln.
-                </p>
-                
-                <div className="space-y-3">
-                  <div className="flex items-start space-x-3">
-                    <span className="text-green-600 mt-1">🚆</span>
+              <p className="mb-5 text-sm leading-relaxed font-body text-zinc-400">
+                <strong className="text-white">Empfehlung:</strong> Wir empfehlen die Anreise mit öffentlichen Verkehrsmitteln.
+              </p>
+              <ul className="mb-6 space-y-4">
+                {[
+                  { name: 'Zug Anfahrt', detail: 'Bahnhof Laufenburg' },
+                  { name: 'Bus Haltestelle', detail: 'Spital Laufenburg' },
+                ].map(({ name, detail }) => (
+                  <li key={name} className="flex items-start gap-3">
+                    <span className="flex-shrink-0 w-2 h-2 mt-1 rounded-full bg-blues" />
                     <div>
-                      <h4 className="font-semibold">Zug Anfahrt</h4>
-                      <p className="text-gray-600 text-sm">Bahnhof Laufenburg</p>
+                      <p className="text-sm font-semibold text-white font-body">{name}</p>
+                      <p className="text-xs font-body text-zinc-500">{detail}</p>
                     </div>
-                  </div>
-                  
-                  <div className="flex items-start space-x-3">
-                    <span className="text-green-600 mt-1">🚌</span>
-                    <div>
-                      <h4 className="font-semibold">Bus Haltestelle</h4>
-                      <p className="text-gray-600 text-sm">Spital Laufenburg</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-6 p-4 bg-green-50 rounded-lg border border-green-200">
-                  <h4 className="font-semibold text-green-800 mb-2">SBB Fahrplan</h4>
-                  <p className="text-green-700 text-sm mb-3">
-                    Aktuelle Fahrpläne und Verbindungen:
-                  </p>
-                  <a 
-                    href="https://www.sbb.ch" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors duration-300"
-                  >
-                    <span className="mr-2">🌐</span>
-                    SBB Fahrplan
-                  </a>
-                </div>
+                  </li>
+                ))}
+              </ul>
+              <div className="p-4 border rounded-lg bg-night-700 border-night-600">
+                <p className="mb-3 text-xs font-body text-zinc-400">Aktuelle Fahrpläne und Verbindungen:</p>
+                <a
+                  href="https://www.sbb.ch"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold tracking-widest text-black uppercase transition-all duration-300 rounded bg-blues hover:bg-blues-dark font-display"
+                >
+                  🌐 SBB Fahrplan
+                </a>
               </div>
             </div>
+
           </div>
 
-          {/* Google Maps */}
-          <div className="bg-gray-50 rounded-lg p-8 shadow-lg">
-            <h3 className="text-2xl font-bold text-center mb-6">Standort</h3>
-            <div className="rounded-lg overflow-hidden shadow-lg">
+          {/* Map */}
+          <div className="overflow-hidden border bg-night-800 border-night-600 rounded-xl">
+            <div className="p-6 border-b border-night-600">
+              <h3 className="text-2xl font-bold tracking-wide text-white font-display">Standort</h3>
+              <p className="mt-1 text-sm font-body text-zinc-500">Turnhalle Laufenburg · Laufenburg, Schweiz</p>
+            </div>
+            <div className="aspect-[16/7]">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3221.6060286791535!2d8.064365875581265!3d47.56259206859855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4790442b0c1c43b7%3A0x8d90be5d33259318!2sStadthalle%20-%20Laufenburg!5e1!3m2!1sde!2sch!4v1755765238733!5m2!1sde!2sch"
                 width="100%"
-                height="400"
-                style={{ border: 0 }}
+                height="100%"
+                style={{ border: 0, display: 'block' }}
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Laufenburg Standort"
-              ></iframe>
-            </div>
-            <div className="mt-4 text-center">
-              <p className="text-gray-600">
-                <strong>Stadthalle Laufenburg</strong><br />
-                Laufenburg, Schweiz
-              </p>
+              />
             </div>
           </div>
         </div>
-      </div>
+      </section>
+
       <Footer />
     </div>
-    
   )
 }
 
