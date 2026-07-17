@@ -42,14 +42,13 @@ const Kontakt = () => {
                 },
                 {
                   label: 'Veranstaltungsort',
-                  value: 'Turnhalle Laufenburg, Schweiz',
+                  value: 'Mehrzweckhalle Laufenburg, Schweiz',
                   icon: <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"/></svg>,
                 },
                 {
                   label: 'Event Termine',
                   value: (
                     <div className="space-y-1 font-body text-sm text-zinc-300">
-                      <p>Donnerstag: 19:30 – 23:00 Uhr</p>
                       <p>Freitag: 20:00 – 02:00 Uhr</p>
                       <p>Samstag: 19:30 – 02:00 Uhr</p>
                     </div>
@@ -58,7 +57,7 @@ const Kontakt = () => {
                 },
               ].map(({ label, value, icon }) => (
                 <div key={label} className="flex gap-4 p-5 bg-night-800 border border-night-600 rounded-xl">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-blues/10 border border-blues/30 text-blues flex items-center justify-center">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/5 border border-white/15 text-white flex items-center justify-center">
                     {icon}
                   </div>
                   <div>
@@ -71,17 +70,17 @@ const Kontakt = () => {
               ))}
 
               {/* Barrierefreiheit */}
-              <div className="p-5 bg-night-800 border border-night-600 border-l-4 border-l-blues rounded-xl">
-                <p className="font-display text-blues text-xs tracking-widest uppercase mb-2">Barrierefreiheit</p>
+              <div className="p-5 bg-night-800 border border-night-600 border-l-4 border-l-white/40 rounded-xl">
+                <p className="font-display text-white text-xs tracking-widest uppercase mb-2">Barrierefreiheit</p>
                 <p className="font-body text-zinc-300 text-sm leading-relaxed mb-3">
                   Rollstuhlplätze sind ausschliesslich über den Veranstalter buchbar.
                 </p>
-                <p className="font-display text-blues font-semibold tracking-wide text-sm">+41 76 372 44 77</p>
+                <p className="font-display text-white font-semibold tracking-wide text-sm">+41 76 372 44 77</p>
               </div>
             </div>
 
             {/* Form */}
-            <div className="bg-night-800 border border-night-600 border-t-2 border-t-blues rounded-xl p-8">
+            <div className="bg-night-800 border border-night-600 border-t-2 border-t-white/40 rounded-xl p-8">
               <p className="font-display text-zinc-500 tracking-[0.3em] text-xs uppercase mb-2">Schreib uns</p>
               <h2 className="font-display font-bold text-2xl text-white tracking-wide mb-8">Schreib uns eine Nachricht</h2>
               <form className="space-y-5">

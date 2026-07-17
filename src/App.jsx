@@ -5,6 +5,7 @@ import UeberUns from './pages/UeberUns';
 import Anreise from './pages/Anreise';
 import Kontakt from './pages/Kontakt';
 import Sponsoren from './pages/Sponsoren';
+import Kuenstler from './pages/Kuenstler';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/kuenstler" element={<Kuenstler />} />
         <Route path="/ueber-uns" element={<UeberUns />} />
         <Route path="/anreise" element={<Anreise />} />
         <Route path="/kontakt" element={<Kontakt />} />

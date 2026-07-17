@@ -9,15 +9,16 @@ module.exports = {
         display: ['Oswald', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
         bebas: ['"Bebas Neue"', 'cursive'],
+        rock: ['"Big Shoulders Display"', 'sans-serif'],
       },
       colors: {
         night: {
-          950: '#07070a',
-          900: '#0d0d10',
-          800: '#161618',
-          700: '#1e1e22',
-          600: '#2a2a2f',
-          500: '#3a3a40',
+          950: '#0a0a0d',
+          900: '#131316',
+          800: '#1c1c21',
+          700: '#26262c',
+          600: '#34343b',
+          500: '#47474f',
         },
         blues: {
           DEFAULT: '#f59e0b',

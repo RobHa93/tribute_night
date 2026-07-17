@@ -1,100 +1,92 @@
-import Band1 from '../assets/img/Band1.PNG'
-import Band2 from '../assets/img/Band2.PNG'
+import { Link } from 'react-router-dom'
+import recklessRoses from '../assets/img/recless.jpg'
+import liveWire from '../assets/img/livewire.jpg'
+import abbornImg from '../assets/img/abborn.jpg'
+import centurysCrimeImg from '../assets/img/centuryscrime_logo.jpg'
 
 const Eventboxes = () => {
   const events = [
     {
-      day: 'DO',
-      date: '22. Jan',
-      night: 'Blues Night',
-      theme: 'blues',
-      acts: ['Andy Egert', 'Lucky Wüthrich'],
-      time: 'Türöffnung 18:30 · Start 19:30',
-      images: [Band2, Band1],
-    },
-    {
       day: 'FR',
-      date: '23. Jan',
-      night: 'Rock Night',
-      theme: 'rock',
-      acts: ['live/wire', 'Shades of Purple'],
+      date: '03. Sep',
+      acts: [
+        { tributeTo: 'Guns N Roses', name: 'Reckless Roses', genre: 'Rock', slug: 'reckless-roses', isBlues: false, image: recklessRoses },
+        { tributeTo: 'AC/DC', name: 'live/wire', genre: 'Rock', slug: 'live-wire', isBlues: false, image: liveWire, fitMobile: true },
+      ],
       time: 'Türöffnung 19:30 · Start 20:00',
-      images: [Band1, Band2],
     },
     {
       day: 'SA',
-      date: '24. Jan',
-      night: 'Rock Night',
-      theme: 'rock',
-      acts: ['CRAZY DIAMOND', 'WE2 – THE U2 TRIBUTE'],
+      date: '04. Sep',
+      acts: [
+        { tributeTo: 'ABBA', name: 'Abborn', genre: 'Pop', slug: 'abborn', isBlues: true, image: abbornImg },
+        { tributeTo: 'Supertramp', name: "Century's Crime", genre: 'Rock', slug: 'centurys-crime', isBlues: false, image: centurysCrimeImg, fitMobile: true },
+      ],
       time: 'Türöffnung 19:00 · Start 19:30',
-      images: [Band2, Band1],
     },
   ];
 
   return (
     <section id="programm" className="relative z-10 pb-0 mt-48 scroll-mt-40">
-      <div className="px-4 mx-auto max-w-7xl sm:px-6">
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:gap-6">
-          {events.map((event, index) => {
-            const isBlues = event.theme === 'blues';
-            const borderClass = isBlues
-              ? 'border-blues/40 hover:border-blues'
-              : 'border-rock/40 hover:border-rock';
-            const badgeBg = isBlues
-              ? 'bg-blues text-black'
-              : 'bg-rock text-white';
-            const titleColor = isBlues ? 'text-blues' : 'text-rock';
-
-            return (
-              <div
-                key={index}
-                className={`group relative bg-night-800 border ${borderClass} rounded-xl overflow-hidden transition-all duration-400 hover:-translate-y-1 hover:shadow-2xl ${
-                  isBlues ? 'hover:shadow-blues/20' : 'hover:shadow-rock/20'
-                }`}
-              >
-                {/* Image strip */}
-                <div className="relative overflow-hidden h-44">
-                  <div className="absolute inset-0 grid grid-cols-2">
-                    <img src={event.images[0]} alt={event.acts[0]} className="object-cover w-full h-full" />
-                    <img src={event.images[1]} alt={event.acts[1]} className="object-cover w-full h-full" />
-                  </div>
-                  {/* Overlay gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-night-800 via-transparent to-transparent" />
-
-                  {/* Date badge top-left */}
-                  <div className={`absolute top-3 left-3 flex items-baseline gap-1 ${badgeBg} rounded-md px-2.5 py-1`}>
-                    <span className="text-xs font-bold tracking-widest uppercase font-display">{event.day}</span>
-                    <span className="text-xs font-semibold font-display">{event.date}</span>
-                  </div>
+      <div className="px-4 mx-auto max-w-5xl sm:px-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-10">
+          {events.map((event, index) => (
+            <div
+              key={index}
+              className="group relative overflow-hidden transition-all duration-400 border rounded-xl bg-night-800 border-night-600 hover:border-zinc-400 hover:-translate-y-1 hover:shadow-2xl hover:shadow-white/10"
+            >
+              {/* Image strip */}
+              <div className="relative overflow-hidden h-64">
+                <div className="absolute inset-0 grid grid-cols-2">
+                  <img
+                    src={event.acts[0].image}
+                    alt={event.acts[0].name}
+                    className={`w-full h-full bg-night-800 ${event.acts[0].fitMobile ? 'object-contain sm:object-cover' : 'object-cover'}`}
+                  />
+                  <img
+                    src={event.acts[1].image}
+                    alt={event.acts[1].name}
+                    className={`w-full h-full bg-night-800 ${event.acts[1].fitMobile ? 'object-contain sm:object-cover' : 'object-cover'}`}
+                  />
                 </div>
+                {/* Overlay gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-night-800 via-transparent to-transparent" />
 
-                {/* Card body */}
-                <div className="px-5 pt-4 pb-6">
-                  <p className={`font-display font-bold text-xs tracking-[0.2em] uppercase mb-1 ${titleColor}`}>
-                    {event.night}
-                  </p>
-                  <div className="mb-4 space-y-1">
-                    {event.acts.map((act, i) => (
-                      <p key={i} className="text-lg font-semibold leading-tight text-white font-display">
-                        {act}
-                      </p>
-                    ))}
-                  </div>
-                  <p className="text-xs tracking-wide font-body text-zinc-500">
-                    {event.time}
-                  </p>
+                {/* Date badge top-left */}
+                <div className="absolute top-4 left-4 flex items-baseline gap-1.5 bg-white text-black rounded-md px-3 py-1.5">
+                  <span className="text-sm font-bold tracking-widest uppercase font-display">{event.day}</span>
+                  <span className="text-sm font-semibold font-display">{event.date}</span>
                 </div>
-
-                {/* Bottom accent line */}
-                <div
-                  className={`absolute bottom-0 left-0 h-0.5 w-0 group-hover:w-full transition-all duration-500 ${
-                    isBlues ? 'bg-blues' : 'bg-rock'
-                  }`}
-                />
               </div>
-            );
-          })}
+
+              {/* Card body */}
+              <div className="px-7 pt-6 pb-8">
+                <div className="mb-1 space-y-5">
+                  {event.acts.map((act, i) => (
+                    <div key={i}>
+                      <Link
+                        to={`/kuenstler#${act.slug}`}
+                        className="text-2xl font-semibold leading-tight text-white hover:text-blues font-display transition-colors duration-300"
+                      >
+                        {act.tributeTo} Tribute: {act.name} 
+                      </Link>
+                      <p className={`font-display font-bold text-sm tracking-[0.2em] uppercase mt-1.5 ${
+                        act.isBlues ? 'text-blues' : 'text-rock'
+                      }`}>
+                        {act.genre}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+                <p className="mt-5 text-sm tracking-wide font-body text-zinc-500">
+                  {event.time}
+                </p>
+              </div>
+
+              {/* Bottom accent line */}
+              <div className="absolute bottom-0 left-0 h-0.5 w-0 group-hover:w-full transition-all duration-500 bg-gradient-to-r from-blues to-rock" />
+            </div>
+          ))}
         </div>
       </div>
     </section>

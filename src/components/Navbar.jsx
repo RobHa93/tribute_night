@@ -21,6 +21,7 @@ const Navbar = () => {
 
   const links = [
     { to: '/', label: 'Home' },
+    { to: '/kuenstler', label: 'Acts' },
     { to: '/anreise', label: 'Anreise' },
     { to: '/ueber-uns', label: 'Über uns' },
     { to: '/sponsoren', label: 'Sponsoren' },
@@ -39,9 +40,12 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Brand */}
-        <Link to="/" className="flex items-baseline gap-0 hover:opacity-80 transition-opacity duration-300">
-          <span className="font-bebas text-2xl tracking-wider text-white">TRIBUTE</span>
-          <span className="font-bebas text-2xl tracking-wider text-blues ml-1.5">NIGHT</span>
+        <Link to="/" className="flex flex-col leading-none hover:opacity-80 transition-opacity duration-300">
+          <span className="flex items-baseline">
+            <span className="font-rock font-extrabold text-2xl sm:text-5xl tracking-wide text-white">TRIBUTE</span>
+            <span className="font-rock font-light text-2xl sm:text-5xl tracking-wider text-blues">NIGHT</span>
+          </span>
+          <span className="font-rock font-medium text-[8px] sm:text-xs tracking-[0.35em] sm:tracking-[0.5em] text-zinc-400 mt-0.5">LAUFENBURG</span>
         </Link>
 
         {/* Desktop links */}
@@ -70,7 +74,10 @@ const Navbar = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-blues hover:bg-blues-light text-black font-display font-semibold text-sm tracking-widest uppercase px-5 py-2.5 rounded transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blues/30"
             >
-              🎟 Tickets
+              <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 010 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 010-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375z" />
+              </svg>
+              Tickets
             </a>
           </li>
         </ul>
@@ -125,7 +132,10 @@ const Navbar = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-blues hover:bg-blues-light text-black font-display font-semibold text-sm tracking-widest uppercase px-5 py-2.5 rounded transition-all duration-300"
             >
-              🎟 Tickets kaufen
+              <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 010 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 010-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375z" />
+              </svg>
+              Tickets kaufen
             </a>
           </li>
         </ul>

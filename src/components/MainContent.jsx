@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import image1 from '../assets/img/image.jpg';
 import image2 from '../assets/img/1585603256.jpg';
@@ -13,19 +14,12 @@ import image6 from '../assets/img/1585603257.jpg';
 import image7 from '../assets/img/1585603258.jpg';
 import dj1 from '../assets/img/DJ1.PNG';
 
-const InfoCard = ({ title, children, accent = 'zinc' }) => {
-  const borderColor =
-    accent === 'blues'
-      ? 'border-t-blues'
-      : accent === 'rock'
-      ? 'border-t-rock'
-      : 'border-t-zinc-600';
-
+const InfoCard = ({ title, children }) => {
   return (
     <div
-      className={`bg-night-800 border border-night-600 border-t-2 ${borderColor} rounded-xl p-6 md:p-8 hover:border-night-500 transition-all duration-300`}
+      className="bg-night-800 border border-night-600 border-t-2 border-t-white/40 rounded-xl p-6 md:p-8 hover:border-night-500 hover:border-t-white transition-all duration-300"
     >
-      <h3 className="font-display font-bold text-xl text-white mb-4 tracking-wide">
+      <h3 className="font-display font-bold text-xl text-blues mb-4 tracking-wide">
         {title}
       </h3>
       {children}
@@ -59,18 +53,15 @@ const MainContent = () => {
       {/* ── Welcome Section ──────────────────────────────── */}
       <section className="py-24 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="font-display text-blues tracking-[0.3em] text-sm uppercase mb-4">
-            4. Ausgabe · 2026
-          </p>
           <h1 className="font-display font-bold text-4xl sm:text-5xl md:text-6xl text-white leading-tight mb-6">
-            Willkommen zur<br />
-            <span className="text-blues">Tribute Night</span><br />
-            in Laufenburg
+            Die Tribute<span className="text-blues">Night</span><br /> geht in die vierte Runde
           </h1>
           <p className="font-body text-zinc-400 text-lg leading-relaxed max-w-3xl mx-auto">
             Die Tribute Night geht in die vierte Runde und bietet ein einzigartiges
-            Musik-Erlebnis mit Coverbands, die euch in die besten Epochen der
-            Musikgeschichte entführen. Drei Abende, eine Halle, unvergessliche Nächte.
+            Musik-Erlebnis mit hochkarätigen Coverbands, die euch in die besten Epochen der
+            Musikgeschichte entführen, von rockigen Hymnen bis zu poppigen Klassikern.
+            Zwei energiegeladene Abende, eine Halle voller Livemusik und ausgelassener
+            Stimmung, unvergessliche Nächte mitten in Laufenburg.
           </p>
           <div className="mt-10">
             <a
@@ -79,7 +70,10 @@ const MainContent = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 bg-blues hover:bg-blues-light text-black font-display font-bold text-base tracking-widest uppercase px-10 py-4 rounded transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blues/30"
             >
-              🎟 Jetzt Tickets sichern
+              <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 010 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 010-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375z" />
+              </svg>
+              Jetzt Tickets sichern
             </a>
           </div>
         </div>
@@ -91,36 +85,39 @@ const MainContent = () => {
       </div>
 
       {/* ── Timetable ────────────────────────────────────── */}
-      <section className="py-20 px-4">
+      <section id="lineup" className="py-20 px-4 scroll-mt-24">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <p className="font-display text-zinc-500 tracking-[0.3em] text-xs uppercase mb-2">Line-up</p>
-            <h2 className="font-display font-bold text-3xl md:text-4xl text-white tracking-wide">Programm & Zeitplan</h2>
+            <h2 className="font-display font-bold text-3xl md:text-4xl text-white tracking-wide">LINE UP</h2>
           </div>
           <div className="space-y-3">
             {[
               {
-                num: '01', day: 'DO', date: '22. Jan', title: 'Blues Night',
-                acts: ['Andy Egert', 'Lucky Wüthrich'], isBlues: true,
+                num: 'FREITAG', day: 'FR', date: '03. Sep', title: 'Rock',
+                acts: ['Guns N Roses Tribute: "Reckless Roses"'], slug: 'reckless-roses', isBlues: false,
               },
               {
-                num: '02', day: 'FR', date: '23. Jan', title: 'Rock Night',
-                acts: ['live/wire', 'Shades of Purple'], isBlues: false,
+                num: 'FREITAG', day: 'FR', date: '03. Sep', title: 'Rock',
+                acts: ['AC/DC Tribute: "live/wire"'], slug: 'live-wire', isBlues: false,
               },
               {
-                num: '03', day: 'SA', date: '24. Jan', title: 'Rock Night',
-                acts: ['Crazy Diamond', 'WE2 – The U2 Tribute'], isBlues: false,
+                num: 'SAMSTAG', day: 'SA', date: '04. Sep', title: 'Pop',
+                acts: ['ABBA Tribute: "Abborn"'], slug: 'abborn', isBlues: true,
               },
-            ].map(({ num, day, date, title, acts, isBlues }) => (
+              {
+                num: 'SAMSTAG', day: 'SA', date: '04. Sep', title: 'Rock',
+                acts: ['Supertramp Tribute: "Century\'s Crime"'], slug: 'centurys-crime', isBlues: false,
+              },
+            ].map(({ num, day, date, title, acts, slug, isBlues }, index) => (
               <div
-                key={num}
+                key={`${num}-${index}`}
                 className={`relative overflow-hidden flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-8 p-6 md:p-8 bg-night-800 border border-night-600 rounded-xl border-l-4 transition-all duration-300 hover:bg-night-700 group ${
                   isBlues ? 'border-l-blues' : 'border-l-rock'
                 }`}
               >
                 {/* Big watermark number */}
                 <span
-                  className={`absolute right-6 top-1/2 -translate-y-1/2 font-bebas text-[7rem] leading-none select-none pointer-events-none opacity-[0.06] group-hover:opacity-[0.12] transition-opacity duration-300 ${
+                  className={`absolute right-6 top-1/2 -translate-y-1/2 font-bebas text-[7rem] leading-none select-none pointer-events-none opacity-[0.3] group-hover:opacity-[0.12] transition-opacity duration-300 ${
                     isBlues ? 'text-blues' : 'text-rock'
                   }`}
                 >
@@ -133,21 +130,27 @@ const MainContent = () => {
                 }`}>
                   <p className={`font-bebas text-xs tracking-widest ${ isBlues ? 'text-blues' : 'text-rock'}`}>{day}</p>
                   <p className="font-bebas text-2xl text-white leading-tight">{date.split('. ')[0]}</p>
-                  <p className={`font-body text-xs ${ isBlues ? 'text-blues/70' : 'text-rock/70'}`}>Jan</p>
+                  <p className={`font-body text-xs ${ isBlues ? 'text-blues/70' : 'text-rock/70'}`}>Sep</p>
                 </div>
 
                 {/* Night info */}
                 <div className="flex-1 min-w-0">
-                  <h3 className={`font-bebas text-3xl md:text-4xl tracking-wider leading-none mb-2 ${
-                    isBlues ? 'text-blues' : 'text-white'
-                  }`}>
-                    {title}
-                  </h3>
-                  <div className="flex flex-wrap gap-x-5 gap-y-0.5">
+                  <div className="flex flex-wrap gap-x-5 gap-y-1 mb-2">
                     {acts.map(act => (
-                      <span key={act} className="font-body text-sm text-zinc-300">{act}</span>
+                      <Link
+                        key={act}
+                        to={`/kuenstler#${slug}`}
+                        className="font-bebas text-3xl md:text-4xl tracking-wider leading-none text-white hover:text-blues transition-colors duration-300"
+                      >
+                        {act}
+                      </Link>
                     ))}
                   </div>
+                  <p className={`font-display font-bold text-xs tracking-[0.2em] uppercase ${
+                    isBlues ? 'text-blues' : 'text-rock'
+                  }`}>
+                    {title}
+                  </p>
                 </div>
 
                 {/* Right decorative lines */}
@@ -178,22 +181,17 @@ const MainContent = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
             {/* Zeiten */}
-            <InfoCard title="Zeiten" accent="blues">
+            <InfoCard title="Zeiten">
               <p className="font-body text-zinc-400 text-sm mb-5 leading-relaxed">
                 Um euch möglichst viel Musik zu bieten, starten die Shows dieses Jahr etwas früher:
               </p>
               <ul className="space-y-3">
                 {[
-                  { day: 'Donnerstag', info: 'Türöffnung 18:30 · Start 19:30', theme: 'blues' },
-                  { day: 'Freitag', info: 'Türöffnung 19:30 · Start 20:00', theme: 'rock' },
-                  { day: 'Samstag', info: 'Türöffnung 19:00 · Start 19:30', theme: 'rock' },
-                ].map(({ day, info, theme }) => (
+                  { day: 'Freitag', info: 'Türöffnung 19:30 · Start 20:00' },
+                  { day: 'Samstag', info: 'Türöffnung 19:00 · Start 19:30' },
+                ].map(({ day, info }) => (
                   <li key={day} className="flex items-start gap-3">
-                    <span
-                      className={`mt-1 w-2 h-2 rounded-full flex-shrink-0 ${
-                        theme === 'blues' ? 'bg-blues' : 'bg-rock'
-                      }`}
-                    />
+                    <span className="mt-1 w-2 h-2 rounded-full flex-shrink-0 bg-white/60" />
                     <span className="font-body text-sm text-zinc-300">
                       <strong className="text-white">{day}:</strong> {info}
                     </span>
@@ -203,12 +201,12 @@ const MainContent = () => {
             </InfoCard>
 
             {/* Verpflegung */}
-            <InfoCard title="Verpflegung" accent="rock">
+            <InfoCard title="Verpflegung">
               <p className="font-body text-zinc-400 text-sm leading-relaxed mb-4">
                 Am Freitag & Samstag könnt ihr schon ab{' '}
                 <strong className="text-white">17:00 Uhr</strong> beim{' '}
-                <span className="text-blues font-semibold">Fyrobe Apéro</span> vorbeischauen –
-                mit feinem Essen vom Grill, kühlen Drinks und guter Stimmung. Danach geht's direkt
+                <span className="text-white font-semibold">Fyrobe Apéro</span> vorbeischauen –
+                mit feinem Essen vom Grill, kühlen Drinks und guter Stimmung. Danach geht es direkt
                 weiter bis ca. 02:00 Uhr.
               </p>
               <p className="font-body text-zinc-400 text-sm leading-relaxed">
@@ -225,7 +223,7 @@ const MainContent = () => {
               </p>
               <a
                 href="tel:+41763724477"
-                className="inline-flex items-center gap-2 text-blues font-body font-semibold hover:text-blues-light transition-colors duration-300"
+                className="inline-flex items-center gap-2 text-white font-body font-semibold hover:text-zinc-300 transition-colors duration-300"
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
@@ -238,7 +236,7 @@ const MainContent = () => {
             <InfoCard title="Altersbeschränkung">
               <p className="font-body text-zinc-400 text-sm leading-relaxed mb-3">
                 Mindestalter:{' '}
-                <strong className="text-rock text-base">16 Jahre</strong>
+                <strong className="text-white text-base">16 Jahre</strong>
               </p>
               <p className="font-body text-zinc-400 text-sm leading-relaxed">
                 Ab 10 Jahren ist der Eintritt in Begleitung eines Erwachsenen möglich.
