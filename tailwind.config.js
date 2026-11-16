@@ -1,59 +1,51 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-  ],
+export default {
+  content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
-      fontFamily: {
-        display: ['Oswald', 'sans-serif'],
-        body: ['Inter', 'sans-serif'],
-        bebas: ['"Bebas Neue"', 'cursive'],
-        rock: ['"Big Shoulders Display"', 'sans-serif'],
-      },
+      // «Hallenlicht»: abgeleitet vom Hallenfoto – Hallendecke, Gobo-Amber, Bühnenrot
       colors: {
-        night: {
-          950: '#0a0a0d',
-          900: '#131316',
-          800: '#1c1c21',
-          700: '#26262c',
-          600: '#34343b',
-          500: '#47474f',
+        hall: {
+          DEFAULT: '#110D0B',
+          surface: '#1B1512',
+          raised: '#272019',
+          line: '#4A3C33',
+          edge: '#7D6B5D',
         },
-        blues: {
-          DEFAULT: '#f59e0b',
-          light: '#fcd34d',
-          dark: '#b45309',
+        ink: {
+          DEFAULT: '#F5EFE8',
+          muted: '#BFB3A8',
+          subtle: '#9A8D80',
         },
-        rock: {
-          DEFAULT: '#ef4444',
-          light: '#f87171',
-          dark: '#b91c1c',
+        accent: {
+          DEFAULT: '#F5A524',
+          hover: '#FFBE55',
+          ink: '#1A0F05',
         },
+        ember: '#E5533D',
+      },
+      fontFamily: {
+        display: ['"Big Shoulders Display Variable"', 'Impact', 'sans-serif'],
+        sans: ['"Archivo Variable"', 'system-ui', 'sans-serif'],
+      },
+      transitionTimingFunction: {
+        'out-expo': 'cubic-bezier(0.16, 1, 0.3, 1)',
       },
       keyframes: {
-        fadeUp: {
-          '0%': { opacity: '0', transform: 'translateY(30px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
+        'rise-in': {
+          '0%': { opacity: '0', transform: 'translateY(24px)' },
+          '100%': { opacity: '1', transform: 'none' },
         },
-        fadeIn: {
+        'fade-in': {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
         },
-        bounce2: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-8px)' },
-        },
       },
       animation: {
-        'fade-up': 'fadeUp 0.8s ease-out forwards',
-        'fade-up-delay': 'fadeUp 0.8s ease-out 0.3s forwards',
-        'fade-up-delay2': 'fadeUp 0.8s ease-out 0.6s forwards',
-        'fade-in': 'fadeIn 1.2s ease-out forwards',
-        'bounce2': 'bounce2 1.5s ease-in-out infinite',
+        'rise-in': 'rise-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) both',
+        'fade-in': 'fade-in 0.25s ease-out both',
       },
     },
   },
   plugins: [],
 };
-

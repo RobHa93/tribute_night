@@ -1,20 +1,22 @@
-import Navbar from '../components/Navbar.jsx'
-import Header from '../components/Header.jsx'
-import EventBoxes from '../components/Eventboxes.jsx'
-import MainContent from '../components/MainContent.jsx'
-import Footer from '../components/Footer.jsx'
+import Hero from '../components/home/Hero';
+import Programm from '../components/home/Programm';
+import WarumTributeNight from '../components/home/WarumTributeNight';
+import GutZuWissen from '../components/home/GutZuWissen';
+import Impressionen from '../components/home/Impressionen';
+import { usePageTitle } from '../hooks/usePageTitle';
 
-  
-  const Home = () => {
-    return (
-      <div>
-        <Navbar />
-        <Header />
-        <EventBoxes />
-        <MainContent />
-        <Footer />
-      </div>
-    )
-  };
+const Home = () => {
+  usePageTitle();
 
-export default Home
+  return (
+    <>
+      <Hero />
+      <Programm />
+      <WarumTributeNight />
+      <GutZuWissen />
+      <Impressionen />
+    </>
+  );
+};
+
+export default Home;

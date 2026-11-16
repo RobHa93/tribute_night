@@ -1,15 +1,79 @@
 <!doctype html>
-<html lang="de">
+<html lang="de-CH">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Tribute Night Laufenburg – Rock & Pop über 2 Tage. 03.–04. September 2027 in der Mehrzweckhalle Laufenburg." />
+    <meta name="description" content="Tribute Night Laufenburg – Rock & Pop an zwei Abenden. Tributes an Guns N’ Roses, AC/DC, ABBA und Supertramp. 03.–04. September 2027 in der Stadthalle Laufenburg." />
+    <meta name="theme-color" content="#110D0B" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Tribute Night Laufenburg 2027" />
+    <meta property="og:description" content="Rock & Pop an zwei Abenden: Guns N’ Roses, AC/DC, ABBA und Supertramp. 03.–04. September 2027, Stadthalle Laufenburg." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>Tribute Night Laufenburg</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Big+Shoulders+Display:wght@300;500;800&family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <!-- Strukturierte Eventdaten für Suchmaschinen; Inhalte wie in src/data/event.js -->
+    <script type="application/ld+json">
+      [
+        {
+          "@context": "https://schema.org",
+          "@type": "MusicEvent",
+          "name": "Tribute Night Laufenburg – Freitag",
+          "startDate": "2027-09-03T20:00:00+02:00",
+          "doorTime": "2027-09-03T19:30:00+02:00",
+          "endDate": "2027-09-04T02:00:00+02:00",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "location": {
+            "@type": "Place",
+            "name": "Stadthalle Laufenburg",
+            "address": { "@type": "PostalAddress", "postalCode": "5080", "addressLocality": "Laufenburg", "addressCountry": "CH" }
+          },
+          "performer": [
+            { "@type": "MusicGroup", "name": "Reckless Roses" },
+            { "@type": "MusicGroup", "name": "live/wire" }
+          ],
+          "organizer": { "@type": "Organization", "name": "Keropower" }
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "MusicEvent",
+          "name": "Tribute Night Laufenburg – Samstag",
+          "startDate": "2027-09-04T19:30:00+02:00",
+          "doorTime": "2027-09-04T19:00:00+02:00",
+          "endDate": "2027-09-05T02:00:00+02:00",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "location": {
+            "@type": "Place",
+            "name": "Stadthalle Laufenburg",
+            "address": { "@type": "PostalAddress", "postalCode": "5080", "addressLocality": "Laufenburg", "addressCountry": "CH" }
+          },
+          "performer": [
+            { "@type": "MusicGroup", "name": "Abborn" },
+            { "@type": "MusicGroup", "name": "Century’s Crime" }
+          ],
+          "organizer": { "@type": "Organization", "name": "Keropower" }
+        }
+      ]
+    </script>
   </head>
   <body>
+    <!--
+============================================================
+
+   _  __                  __        __   _
+  | |/ /___ _ __ ___      \ \      / /__| |__
+  | ' // _ \ '__/ _ \ _____\ \ /\ / / _ \ '_ \
+  | . \  __/ | | (_) |______\ V  V /  __/ |_) |
+  |_|\_\___|_|  \___/        \_/\_/ \___|_.__/
+
+              www.kero-web.ch
+
+        Moderne Websites und Webapplikationen
+        entwickelt mit Fokus auf Design, Performance
+        und saubere technische Umsetzung.
+
+============================================================
+-->
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

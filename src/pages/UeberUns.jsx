@@ -1,147 +1,89 @@
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
-import { useState, useEffect, useRef } from 'react'
-import djImage from '../assets/img/DJ1.PNG'
+import PageHero from '../components/PageHero';
+import { usePageTitle } from '../hooks/usePageTitle';
+import heroImage from '../assets/img/web/buehne-fans-sw.webp';
 
-const CounterAnimation = ({ target, label, suffix = '' }) => {
-  const [count, setCount] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
-  const countRef = useRef();
+const FACTS = [
+  { value: '10', label: 'Jahre' },
+  { value: '2', label: 'Abende' },
+  { value: '1000+', label: 'Besucher' },
+];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !isVisible) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (countRef.current) {
-      observer.observe(countRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, [isVisible]);
-
-  useEffect(() => {
-    if (!isVisible) return;
-
-    const duration = 2000; // 2 Sekunden
-    const steps = 60;
-    const increment = target / steps;
-    let current = 0;
-    
-    const timer = setInterval(() => {
-      current += increment;
-      if (current >= target) {
-        setCount(target);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(current));
-      }
-    }, duration / steps);
-
-    return () => clearInterval(timer);
-  }, [isVisible, target]);
+const UeberUns = () => {
+  usePageTitle('Über uns');
 
   return (
-    <div ref={countRef}>
-      <div className="font-display font-bold text-4xl text-blues">{count}{suffix}</div>
-      <div className="font-body text-sm text-zinc-500 mt-1">{label}</div>
-    </div>
+    <>
+      <PageHero
+        title="Über uns"
+        image={heroImage}
+        imageAlt="Band auf der Bühne, Fans in der ersten Reihe strecken die Hände hoch"
+        imagePosition="40% 30%"
+      >
+        Seit zehn Jahren bringen wir mit der Tribute Night ein einzigartiges Musik-Erlebnis in die historische Stadt
+        am Rhein. Was als kleine Idee begann, ist heute einer der beliebtesten Musikevents der Region.
+      </PageHero>
+
+      <section className="section">
+        <div className="container-content grid gap-12 md:grid-cols-2 md:gap-16">
+          <div>
+            <h2 className="heading-section">Unsere Geschichte</h2>
+            <div className="mt-6 space-y-4 text-ink-muted">
+              <p>
+                Die Tribute Night entstand aus der Leidenschaft für grossartige Musik und dem Wunsch, die grössten Hits
+                der Musikgeschichte live und authentisch zu erleben.
+              </p>
+              <p>
+                Was vor zehn Jahren mit der Idee begann, hochkarätige Tribute-Bands nach Laufenburg zu holen, ist
+                heute ein fester Bestandteil des regionalen Veranstaltungskalenders. Viele unvergessliche Konzerte,
+                grossartige Musiker und ein begeistertes Publikum haben die Tribute Night geprägt.
+              </p>
+              <p>
+                2027 feiern wir das <strong className="text-ink">10-jährige Jubiläum</strong>, mit zwei
+                aussergewöhnlichen Konzertabenden voller Emotionen, Erinnerungen und grossartiger Livemusik.
+              </p>
+            </div>
+          </div>
+          <div>
+            <h2 className="heading-section">Unser Konzept</h2>
+            <div className="mt-6 space-y-4 text-ink-muted">
+              <p>
+                Tribute-Bands bringen die Musik legendärer Künstler mit derselben Energie, Leidenschaft und
+                Authentizität wie die Originale zurück auf die Bühne.
+              </p>
+              <p>
+                An zwei aufeinanderfolgenden Tagen verwandelt sich die Stadthalle Laufenburg in einen Hotspot für
+                Musikliebhaber aller Generationen.
+              </p>
+              <p>
+                Von Rock-Hymnen über Pop-Klassiker bis hin zu unvergesslichen Balladen bietet die Tribute Night ein
+                vielfältiges Programm für jeden Geschmack.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="vision-titel" className="section bg-hall-surface">
+        <div className="container-content">
+          <h2 id="vision-titel" className="heading-section">Unsere Vision</h2>
+          <p className="mt-5 max-w-3xl text-lg text-ink-muted">
+            Wir möchten Laufenburg als Musikstadt etablieren und Menschen aller Generationen zusammenbringen. Die
+            Tribute Night soll ein Ort sein, wo Musikliebhaber gemeinsam die grössten Hits der Musikgeschichte feiern.
+          </p>
+          <dl className="mt-12 grid grid-cols-3 gap-6 border-t border-hall-line pt-8">
+            {FACTS.map(({ value, label }) => (
+              <div key={label} className="flex flex-col-reverse">
+                <dt className="mt-2 text-ink-muted">{label}</dt>
+                <dd className="font-display text-[clamp(3rem,9vw,5.5rem)] font-extrabold leading-none text-accent tabular-nums">
+                  {value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
+    </>
   );
 };
 
-const UeberUns = () => {
-  return (
-    <div className="bg-night-900 min-h-screen">
-      <Navbar />
-
-      {/* Page Hero */}
-      <div className="relative h-[60vh] flex items-end pb-16 justify-center overflow-hidden">
-        <img src={djImage} alt="Tribute Night Team" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-night-900 via-black/50 to-black/30" />
-        <div className="relative z-10 text-center px-4">
-          <p className="font-display text-blues tracking-[0.3em] text-xs uppercase mb-2">Wer wir sind</p>
-          <h1 className="font-display font-bold text-5xl md:text-6xl text-white tracking-wide">Über uns</h1>
-        </div>
-      </div>
-
-      {/* Einführung */}
-      <section className="py-20 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="font-display font-bold text-3xl md:text-4xl text-white mb-6 tracking-wide">
-            Die Tribute Night Laufenburg
-          </h2>
-          <p className="font-body text-zinc-400 text-lg leading-relaxed">
-            Seit 2022 bringen wir mit der Tribute Night Laufenburg ein einzigartiges Musik-Erlebnis
-            in die historische Stadt an der Aare. Was als kleine Idee begann, ist heute zu einem
-            der beliebtesten Musikevents der Region geworden.
-          </p>
-        </div>
-      </section>
-
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="h-px bg-gradient-to-r from-transparent via-night-600 to-transparent" />
-      </div>
-
-      {/* Geschichte & Konzept */}
-      <section className="py-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="bg-night-800 border border-night-600 border-t-2 border-t-white/40 rounded-xl p-8">
-              <h3 className="font-display font-bold text-2xl text-white mb-6 tracking-wide">Unsere Geschichte</h3>
-              <div className="space-y-4 font-body text-zinc-400 text-sm leading-relaxed">
-                <p>Die Tribute Night entstand aus der Leidenschaft für großartige Musik und dem Wunsch, die größten Hits der Musikgeschichte live und authentisch zu erleben.</p>
-                <p>Was 2022 mit der ersten Ausgabe begann, hat sich schnell zu einem festen Termin im Veranstaltungskalender entwickelt. Jedes Jahr wächst die Veranstaltung und zieht Musikfans aus der ganzen Region an.</p>
-                <p>2027 feiern wir bereits die <strong className="text-white">vierte Ausgabe</strong>, ein Beweis für den Erfolg und die Beliebtheit unseres Konzepts.</p>
-              </div>
-            </div>
-            <div className="bg-night-800 border border-night-600 border-t-2 border-t-white/40 rounded-xl p-8">
-              <h3 className="font-display font-bold text-2xl text-white mb-6 tracking-wide">Unser Konzept</h3>
-              <div className="space-y-4 font-body text-zinc-400 text-sm leading-relaxed">
-                <p>Tribute Bands bringen die Musik legendärer Künstler mit derselben Energie, Leidenschaft und Authentizität wie die Originale zurück auf die Bühne.</p>
-                <p>An zwei aufeinanderfolgenden Tagen verwandelt sich die Mehrzweckhalle Laufenburg in einen Hotspot für Musikliebhaber aller Generationen.</p>
-                <p>Von Rock-Hymnen über Pop-Klassiker bis hin zu unvergesslichen Balladen bietet die Tribute Night ein vielfältiges Programm für jeden Geschmack.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="h-px bg-gradient-to-r from-transparent via-night-600 to-transparent" />
-      </div>
-
-
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="h-px bg-gradient-to-r from-transparent via-night-600 to-transparent" />
-      </div>
-
-      {/* Vision + Counters */}
-      <section className="py-20 px-4">
-        <div className="max-w-5xl mx-auto">
-          <div className="bg-night-800 border border-night-600 rounded-2xl p-10 md:p-14 text-center">
-            <p className="font-display text-zinc-500 tracking-[0.3em] text-xs uppercase mb-3">Zahlen & Fakten</p>
-            <h2 className="font-display font-bold text-3xl text-white mb-6 tracking-wide">Unsere Vision</h2>
-            <p className="font-body text-zinc-400 text-base leading-relaxed max-w-3xl mx-auto mb-12">
-              Wir möchten Laufenburg als Musikstadt etablieren und Menschen aller Generationen zusammenbringen.
-              Die Tribute Night soll ein Ort sein, wo Musikliebhaber gemeinsam die größten Hits der Musikgeschichte feiern können.
-            </p>
-            <div className="grid grid-cols-3 gap-8">
-              <CounterAnimation target={4} label="Ausgaben" />
-              <CounterAnimation target={2} label="Abende" />
-              <CounterAnimation target={1000} label="Besucher" suffix="+" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <Footer />
-    </div>
-  )
-}
-
-export default UeberUns
+export default UeberUns;

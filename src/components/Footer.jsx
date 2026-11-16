@@ -1,130 +1,82 @@
 import { Link } from 'react-router-dom';
+import { EVENT, NAV_LINKS, SOCIAL_LINKS } from '../data/event';
+import TicketLink from './TicketLink';
+import logo from '../assets/img/web/logo-tribute-night.webp';
+
+const SOCIAL_ICON_PATHS = {
+  Facebook: 'M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z',
+  Instagram: 'M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z',
+};
+
+const FOOTER_LINKS = [{ to: '/', label: 'Startseite' }, ...NAV_LINKS];
 
 const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const socialLinks = SOCIAL_LINKS.filter(({ url }) => url);
 
   return (
-    <footer className="bg-night-950 border-t border-night-700">
-      {/* Upper footer */}
-      <div className="max-w-7xl mx-auto px-6 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
+    <footer className="border-t border-hall-line bg-hall">
+      <div className="container-page grid gap-12 py-16 md:grid-cols-[2fr_1fr_1fr]">
+        <div>
+          <Link to="/" className="inline-block">
+            <img src={logo} alt="Tribute Night Laufenburg, Startseite" width="640" height="249" loading="lazy" className="h-24 w-auto" />
+          </Link>
+          <p className="mt-2 font-display text-sm font-semibold uppercase tracking-[0.3em] text-ink-subtle">Laufenburg am Rhy</p>
+          <p className="mt-5 max-w-xs text-ink-muted">
+            Rock und Pop an zwei Abenden.
+            <br />
+            {EVENT.venue}, {EVENT.dateLabel}
+          </p>
+          <TicketLink className="mt-6" />
+        </div>
 
-          {/* Brand + tagline */}
-          <div>
-            <Link to="/" className="inline-flex flex-col leading-none hover:opacity-80 transition-opacity duration-300">
-              <span className="flex items-baseline">
-                <span className="font-rock font-extrabold text-3xl tracking-tight text-white">TRIBUTE</span>
-                <span className="font-rock font-light text-3xl tracking-tight text-blues">NIGHT</span>
-              </span>
-              <span className="font-rock font-medium text-xs tracking-[0.5em] text-zinc-400 mt-1">LAUFENBURG</span>
-            </Link>
-            <p className="font-body text-xs tracking-[0.3em] uppercase text-zinc-600 mt-1 mb-2">Am Rhy</p>
-            <p className="font-body text-zinc-500 text-sm leading-relaxed max-w-xs">
-              Rock & Pop über zwei unvergessliche Abende. <br />
-              Mehrzweckhalle Laufenburg · 03.–04. Sep 2027
-            </p>
-            <a
-              href="https://www.eventfrog.ch"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-5 inline-flex items-center gap-2 bg-blues hover:bg-blues-light text-black font-display font-bold text-xs tracking-widest uppercase px-5 py-2.5 rounded transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blues/30"
-            >
-              <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 010 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 010-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375z" />
-              </svg>
-              Tickets kaufen
-            </a>
-          </div>
+        <nav aria-labelledby="footer-navigation">
+          <h2 id="footer-navigation" className="font-sans text-sm font-semibold text-ink">Navigation</h2>
+          <ul className="mt-4 space-y-2">
+            {FOOTER_LINKS.map(({ to, label }) => (
+              <li key={to}>
+                <Link to={to} className="text-ink-muted transition-colors hover:text-ink">{label}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
-          {/* Navigation */}
-          <div>
-            <p className="font-display text-xs tracking-[0.2em] uppercase text-zinc-500 mb-4">Navigation</p>
-            <ul className="space-y-2">
-              {[
-                { to: '/', label: 'Home' },
-                { to: '/kuenstler', label: 'Acts' },
-                { to: '/anreise', label: 'Anreise' },
-                { to: '/ueber-uns', label: 'Über uns' },
-                { to: '/sponsoren', label: 'Sponsoren' },
-                { to: '/kontakt', label: 'Kontakt' },
-              ].map(({ to, label }) => (
-                <li key={to}>
-                  <Link
-                    to={to}
-                    className="font-body text-sm text-zinc-400 hover:text-whites hover:text-white transition-colors duration-300"
+        <div>
+          <h2 className="font-sans text-sm font-semibold text-ink">Kontakt</h2>
+          <ul className="mt-4 space-y-2 text-ink-muted">
+            <li className="font-semibold text-ink">{EVENT.organizer}</li>
+            <li><a href={`mailto:${EVENT.email}`} className="transition-colors hover:text-accent">{EVENT.email}</a></li>
+            <li><a href={EVENT.phone.href} className="tabular-nums transition-colors hover:text-accent">{EVENT.phone.label}</a></li>
+          </ul>
+
+          {socialLinks.length > 0 && (
+            <ul className="mt-6 flex gap-3">
+              {socialLinks.map(({ label, url }) => (
+                <li key={label}>
+                  <a
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="flex h-11 w-11 items-center justify-center rounded border border-hall-line text-ink-muted transition-colors hover:border-accent hover:text-accent"
                   >
-                    {label}
-                  </Link>
+                    <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d={SOCIAL_ICON_PATHS[label]} />
+                    </svg>
+                  </a>
                 </li>
               ))}
             </ul>
-          </div>
-
-          {/* Kontakt + Social */}
-          <div>
-            <p className="font-display text-xs tracking-[0.2em] uppercase text-zinc-500 mb-4">Kontakt</p>
-            <div className="space-y-2 mb-5">
-              <p className="font-body text-sm text-zinc-400">
-                <span className="text-white font-medium">Keropower</span>
-              </p>
-              <a
-                href="mailto:keropower@bluewin.ch"
-                className="font-body text-sm text-zinc-400 hover:text-blues transition-colors duration-300 block"
-              >
-                keropower@bluewin.ch
-              </a>
-              <a
-                href="tel:+41763724477"
-                className="font-body text-sm text-zinc-400 hover:text-blues transition-colors duration-300 block"
-              >
-                +41 76 372 44 77
-              </a>
-            </div>
-
-            {/* Social */}
-            <div className="flex gap-3">
-              <a
-                href="#"
-                className="w-9 h-9 rounded border border-night-600 flex items-center justify-center text-zinc-400 hover:text-white hover:border-blues hover:text-blues transition-all duration-300"
-                aria-label="Facebook"
-              >
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                </svg>
-              </a>
-              <a
-                href="#"
-                className="w-9 h-9 rounded border border-night-600 flex items-center justify-center text-zinc-400 hover:text-white hover:border-blues hover:text-blues transition-all duration-300"
-                aria-label="Instagram"
-              >
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-
+          )}
         </div>
       </div>
 
-      {/* Bottom bar */}
-      <div className="border-t border-night-700">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="font-body text-xs text-zinc-600">
-            © 2027 Tribute Night Laufenburg · Keropower
-          </p>
-          <button
-            onClick={scrollToTop}
-            className="inline-flex items-center gap-2 font-body text-xs text-zinc-500 hover:text-blues transition-colors duration-300"
-            aria-label="Zurück nach oben"
-          >
-            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
-            </svg>
-            Nach oben
-          </button>
+      <div className="border-t border-hall-line">
+        <div className="container-page flex flex-col items-center justify-between gap-3 py-5 text-sm text-ink-subtle sm:flex-row">
+          <p>© 2027 Tribute Night Laufenburg, {EVENT.organizer}</p>
+          <ul className="flex gap-6">
+            <li><Link to="/impressum" className="transition-colors hover:text-accent">Impressum</Link></li>
+            <li><Link to="/datenschutz" className="transition-colors hover:text-accent">Datenschutz</Link></li>
+          </ul>
         </div>
       </div>
     </footer>

@@ -1,94 +1,102 @@
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
-import sponsorenImage from '../assets/img/Unbenannt.PNG'
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import PageHero from '../components/PageHero';
+import { SPONSORS } from '../data/event';
+import { usePageTitle } from '../hooks/usePageTitle';
+import heroImage from '../assets/img/web/buehne-rot.webp';
+
+const IBAN = 'CH09 0076 1642 4020 2200 1';
 
 const Sponsoren = () => {
-  const sponsors = Array.from({ length: 20 }, (_, i) => ({ id: i + 1, name: `Sponsor ${i + 1}` }))
+  usePageTitle('Gönner & Sponsoren');
+  const [copyStatus, setCopyStatus] = useState('');
+
+  const copyIban = async () => {
+    try {
+      await navigator.clipboard.writeText(IBAN.replaceAll(' ', ''));
+      setCopyStatus('IBAN kopiert');
+    } catch {
+      setCopyStatus('Kopieren nicht möglich, bitte von Hand übernehmen');
+    }
+  };
 
   return (
-    <div className="min-h-screen bg-night-900">
-      <Navbar />
+    <>
+      <PageHero title="Gönner & Sponsoren" image={heroImage} imageAlt="Band unter roten Scheinwerfern" imagePosition="center 62%">
+        Partner und Unterstützer machen die Tribute Night möglich.
+      </PageHero>
 
-      {/* Hero */}
-      <div className="relative h-[60vh] flex items-end pb-16 justify-center overflow-hidden">
-        <img src={sponsorenImage} alt="Sponsoren" className="absolute inset-0 object-cover w-full h-full" />
-        <div className="absolute inset-0 bg-gradient-to-t from-night-900 via-black/50 to-black/30" />
-        <div className="relative z-10 px-4 text-center">
-          <p className="font-display text-blues tracking-[0.3em] text-xs uppercase mb-2">Partner & Unterstützer</p>
-          <h1 className="text-5xl font-bold tracking-wide text-white font-display md:text-6xl">Sponsoren & Gönner</h1>
-        </div>
-      </div>
-
-      {/* Gönner Section */}
-      <section className="px-4 py-20">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <p className="font-display text-zinc-500 tracking-[0.3em] text-xs uppercase mb-2">Werde Teil des Events</p>
-            <h2 className="font-display font-bold text-3xl md:text-4xl text-white tracking-wide">Unterstütze unseren Event als Gönner</h2>
+      <section aria-labelledby="goenner-titel" className="section">
+        <div className="container-content grid gap-12 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <h2 id="goenner-titel" className="heading-section">Werde Gönner</h2>
+            <p className="mt-5 text-lg text-ink-muted">
+              Mit deinem finanziellen Beitrag hilfst du, unseren Event erfolgreich zu gestalten.
+            </p>
+            <p className="mt-4 text-ink-muted">
+              <strong className="text-ink">Dankeschön:</strong> Für jede Spende ab CHF 100.00 erhältst du ein
+              Eintrittsticket, wahlweise für Freitag oder Samstag (je nach Verfügbarkeit).
+            </p>
           </div>
 
-          <div className="bg-night-800 border border-night-600 border-t-2 border-t-white/40 rounded-xl p-8 md:p-10">
-            <p className="text-zinc-300 font-body leading-relaxed mb-6">
-              Mit Deinem finanziellen Beitrag hilfst Du, unseren Event erfolgreich zu gestalten.
-            </p>
-            <p className="text-zinc-300 font-body leading-relaxed mb-8">
-              <span className="text-white font-semibold">Exklusives Dankeschön:</span> Für jede Spende ab CHF 100.00 erhältst Du ein Eintrittsticket, wahlweise für Freitag oder Samstag (je nach Verfügbarkeit).
-            </p>
-
-            {/* IBAN Box */}
-            <div className="bg-night-700 border border-night-600 border-l-4 border-l-white/40 rounded-lg p-5 mb-8">
-              <p className="font-display text-zinc-400 text-xs tracking-widest uppercase mb-1">Einzahlungsdetails</p>
-              <p className="font-display text-white text-lg tracking-wider">IBAN: CH09 0076 1642 4020 2200 1</p>
+          <div className="rounded-xl bg-hall-surface p-6 md:p-8">
+            <h3 className="heading-card">Einzahlung</h3>
+            <div className="mt-4 flex flex-wrap items-center gap-4">
+              <p className="font-display text-2xl font-bold tracking-wide tabular-nums md:text-3xl">{IBAN}</p>
+              <button type="button" onClick={copyIban} className="btn-secondary px-4 py-2">IBAN kopieren</button>
             </div>
+            <p role="status" className="mt-2 min-h-[1.5em] text-sm text-ink-subtle">{copyStatus}</p>
 
-            <p className="font-display text-zinc-400 text-xs tracking-widest uppercase mb-5">So funktionierts</p>
-            <ol className="space-y-5">
+            <h3 className="heading-card mt-6">So funktioniert’s</h3>
+            <ol className="mt-4 space-y-4">
               <li className="flex gap-4">
-                <span className="flex-shrink-0 w-7 h-7 rounded-full bg-white/10 border border-white/20 text-white font-display font-bold text-sm flex items-center justify-center">1</span>
-                <p className="text-zinc-300 font-body text-sm leading-relaxed pt-0.5">
-                  Trage unter <a href="/kontakt" className="text-blues hover:text-blues-light underline underline-offset-2 transition-colors">Kontakt</a> Deinen Namen sowie den gespendeten Betrag ein, damit wir Dich auf unserer Gönnerliste aufführen können.
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded bg-accent font-bold text-accent-ink">1</span>
+                <p className="text-ink-muted">
+                  Trage unter <Link to="/kontakt" className="link">Kontakt</Link> deinen Namen sowie den gespendeten
+                  Betrag ein, damit wir dich auf unserer Gönnerliste aufführen können.
                 </p>
               </li>
               <li className="flex gap-4">
-                <span className="flex-shrink-0 w-7 h-7 rounded-full bg-white/10 border border-white/20 text-white font-display font-bold text-sm flex items-center justify-center">2</span>
-                <p className="text-zinc-300 font-body text-sm leading-relaxed pt-0.5">
-                  Bei Spenden von CHF 100.00 oder mehr: Bitte gib zusätzlich den gewünschten Veranstaltungstag für Dein Eintrittsticket an. Dieses senden wir Dir kostenlos per Post zu.
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded bg-accent font-bold text-accent-ink">2</span>
+                <p className="text-ink-muted">
+                  Bei Spenden ab CHF 100.00: Gib zusätzlich den gewünschten Veranstaltungstag für dein Eintrittsticket
+                  an. Dieses senden wir dir kostenlos per Post zu.
                 </p>
               </li>
             </ol>
-
-            <p className="mt-8 text-white font-display tracking-wide font-semibold text-sm">Vielen Dank für Deine Unterstützung!</p>
+            <p className="mt-8 font-semibold">Vielen Dank für deine Unterstützung!</p>
           </div>
         </div>
       </section>
 
-      <div className="px-6 mx-auto max-w-7xl">
-        <div className="h-px bg-gradient-to-r from-transparent via-night-600 to-transparent" />
-      </div>
-
-      {/* Sponsors Grid */}
-      <section className="px-4 py-20">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <p className="font-display text-zinc-500 tracking-[0.3em] text-xs uppercase mb-2">Die uns ermöglichen</p>
-            <h2 className="font-display font-bold text-3xl md:text-4xl text-white tracking-wide">Unsere Sponsoren</h2>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-            {sponsors.map((sponsor) => (
-              <div
-                key={sponsor.id}
-                className="bg-night-800 border border-night-600 rounded-xl p-6 flex items-center justify-center hover:border-white/40 transition-colors duration-300"
-              >
-                <p className="font-display text-zinc-400 text-sm text-center tracking-wide">{sponsor.name}</p>
-              </div>
-            ))}
-          </div>
+      <section aria-labelledby="sponsoren-titel" className="section bg-hall-surface">
+        <div className="container-content">
+          <h2 id="sponsoren-titel" className="heading-section">Unsere Sponsoren</h2>
+          {SPONSORS.length > 0 ? (
+            <ul className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+              {SPONSORS.map(({ name, logo, url }) => (
+                <li key={name}>
+                  <a
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex aspect-[3/2] items-center justify-center rounded-xl bg-hall-raised p-6"
+                  >
+                    <img src={logo} alt={name} loading="lazy" className="max-h-full max-w-full object-contain" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="mt-5 max-w-2xl text-lg text-ink-muted">
+              Unsere Sponsoren stellen wir hier bald vor. Interesse an einem Sponsoring?{' '}
+              <Link to="/kontakt" className="link">Melde dich bei uns</Link>
+            </p>
+          )}
         </div>
       </section>
+    </>
+  );
+};
 
-      <Footer />
-    </div>
-  )
-}
-
-export default Sponsoren
+export default Sponsoren;
