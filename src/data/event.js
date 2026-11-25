@@ -111,7 +111,6 @@ export const artistsOfNight = (night) =>
 export const NAV_LINKS = [
   { to: '/kuenstler', label: 'Line-up' },
   { to: '/anreise', label: 'Anreise' },
-  { to: '/ueber-uns', label: 'Über uns' },
   { to: '/sponsoren', label: 'Gönner & Sponsoren' },
   { to: '/kontakt', label: 'Kontakt' },
 ];
