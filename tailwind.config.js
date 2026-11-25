@@ -42,10 +42,15 @@ export default {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
         },
+        nudge: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(8px)' },
+        },
       },
       animation: {
         'rise-in': 'rise-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) both',
         'fade-in': 'fade-in 0.25s ease-out both',
+        nudge: 'nudge 2s ease-in-out infinite',
       },
     },
   },

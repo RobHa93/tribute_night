@@ -40,3 +40,9 @@ export const PlayIcon = (props) => (
     <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 010 1.972l-11.54 6.347a1.125 1.125 0 01-1.667-.986V5.653z" />
   </Icon>
 );
+
+export const ChevronDownIcon = (props) => (
+  <Icon {...props}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+  </Icon>
+);
