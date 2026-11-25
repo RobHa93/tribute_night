@@ -75,7 +75,7 @@ const Navbar = () => {
             <li key={to}>
               <NavLink
                 to={to}
-                className={({ isActive }) => `nav-link ${isActive ? 'text-accent' : 'text-ink-muted hover:text-ink'}`}
+                className={({ isActive }) => `nav-link ${isActive ? 'text-accent' : 'text-ink hover:text-accent'}`}
               >
                 {label}
               </NavLink>
