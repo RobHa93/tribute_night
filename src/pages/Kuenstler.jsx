@@ -110,7 +110,7 @@ const Kuenstler = () => {
               ))}
             </div>
 
-            <TicketLink label={`Tickets für ${night.day}`} className="mt-14" />
+            <TicketLink href={night.ticketUrl} label={`Tickets für ${night.day}`} className="mt-14" />
           </div>
         </section>
       ))}

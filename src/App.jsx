@@ -8,6 +8,7 @@ import Sponsoren from './pages/Sponsoren';
 import Kuenstler from './pages/Kuenstler';
 import Impressum from './pages/Impressum';
 import Datenschutz from './pages/Datenschutz';
+import Tickets from './pages/Tickets';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/anreise" element={<Anreise />} />
           <Route path="/kontakt" element={<Kontakt />} />
           <Route path="/sponsoren" element={<Sponsoren />} />
+          <Route path="/tickets" element={<Tickets />} />
           <Route path="/impressum" element={<Impressum />} />
           <Route path="/datenschutz" element={<Datenschutz />} />
         </Route>

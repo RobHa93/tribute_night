@@ -19,8 +19,6 @@ export const EVENT = {
   dateLabel: '03.–04. September 2027',
   venue: 'Stadthalle Laufenburg',
   postalTown: '5080 Laufenburg',
-  // Führt auf Eventfrog; die Event-Seite folgt, sobald der Vorverkauf aufgeschaltet ist
-  ticketUrl: 'https://www.eventfrog.ch',
   organizer: 'Keropower',
   // Postadresse fürs Impressum, erscheint dort, sobald eingetragen
   address: '',
@@ -40,6 +38,7 @@ export const NIGHTS = [
     start: '20:00',
     end: '02:00',
     acts: ['reckless-roses', 'live-wire'],
+    ticketUrl: 'https://eventfrog.ch/de/p/konzerte/pop-rock/tribute-night-laufenburg-10-jahre-jubilaeum-laufenburg-7504640735544664563.html',
   },
   {
     id: 'samstag',
@@ -50,8 +49,21 @@ export const NIGHTS = [
     start: '19:30',
     end: '02:00',
     acts: ['abborn', 'centurys-crime'],
+    ticketUrl: 'https://eventfrog.ch/de/p/konzerte/pop-rock/tribute-night-laufenburg-10-jahre-jubilaeum-laufenburg-7504642929597614667.html',
   },
 ];
+
+// Preise in CHF; Early Bird gilt bis earlyBirdUntil, danach der Normalpreis
+export const TICKETS = {
+  earlyBirdUntil: '31.07.2027',
+  normalFrom: '01.08.2027',
+  options: [
+    { id: 'freitag', title: 'Freitag', date: '03.09.2027', acts: 'Guns N’ Roses & AC/DC', earlyBird: 38, normal: 42, url: NIGHTS[0].ticketUrl },
+    { id: 'samstag', title: 'Samstag', date: '04.09.2027', acts: 'ABBA & Supertramp', earlyBird: 38, normal: 42, url: NIGHTS[1].ticketUrl },
+    // Kein eigener Link: auf Eventfrog bei Freitag oder Samstag als Option «beide Abende» wählbar
+    { id: 'kombi', title: 'Kombiticket', date: 'Freitag und Samstag', acts: 'Alle vier Tribute-Bands', earlyBird: 70, normal: 80 },
+  ],
+};
 
 // youtubeId: Live-Video der Band, übernommen von der bisherigen Website
 export const ARTISTS = [

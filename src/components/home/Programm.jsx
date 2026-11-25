@@ -35,7 +35,7 @@ const NightPanel = ({ night }) => (
       ))}
     </ul>
 
-    <TicketLink label={`Tickets für ${night.day}`} className="mt-6 self-start" />
+    <TicketLink href={night.ticketUrl} label={`Tickets für ${night.day}`} className="mt-6 self-start" />
   </article>
 );
 
