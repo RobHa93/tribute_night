@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { EVENT, NAV_LINKS, SOCIAL_LINKS } from '../data/event';
 import TicketLink from './TicketLink';
-import logo from '../assets/img/web/logo-tribute-night.webp';
+import Wordmark from './Wordmark';
 
 const SOCIAL_ICON_PATHS = {
   Facebook: 'M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z',
@@ -12,13 +12,20 @@ const FOOTER_LINKS = [{ to: '/', label: 'Startseite' }, ...NAV_LINKS];
 
 const Footer = () => {
   const socialLinks = SOCIAL_LINKS.filter(({ url }) => url);
+  const { pathname } = useLocation();
 
   return (
     <footer className="border-t border-hall-line bg-hall">
       <div className="container-page grid gap-12 py-16 md:grid-cols-[2fr_1fr_1fr]">
         <div>
-          <Link to="/" className="inline-block">
-            <img src={logo} alt="Tribute Night Laufenburg, Startseite" width="640" height="249" loading="lazy" className="h-24 w-auto" />
+          {/* Wie in der Navigation: auf der Startseite selbst nach oben scrollen */}
+          <Link
+            to="/"
+            onClick={() => pathname === '/' && window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="inline-block"
+          >
+            <Wordmark className="text-6xl" />
+            <span className="sr-only"> Laufenburg, Startseite</span>
           </Link>
           <p className="mt-2 font-display text-sm font-semibold uppercase tracking-[0.3em] text-ink-subtle">Laufenburg am Rhy</p>
           <p className="mt-5 max-w-xs text-ink-muted">

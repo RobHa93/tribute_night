@@ -2,17 +2,22 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { NAV_LINKS } from '../data/event';
 import TicketLink from './TicketLink';
-import logo from '../assets/img/web/logo-tribute-night.webp';
+import Wordmark from './Wordmark';
 
 const SCROLL_THRESHOLD_PX = 40;
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isPastHero, setIsPastHero] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { pathname } = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > SCROLL_THRESHOLD_PX);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > SCROLL_THRESHOLD_PX);
+      // Der Startseiten-Hero ist bildschirmhoch; die Leiste ist ca. 72 px hoch
+      setIsPastHero(window.scrollY > window.innerHeight - 72);
+    };
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -37,11 +42,13 @@ const Navbar = () => {
   }, [menuOpen]);
 
   const isSolid = isScrolled || menuOpen;
+  // Auf der Startseite zeigt der Hero schon «Tribute Night»; der Schriftzug in der Leiste kommt erst danach
+  const showWordmark = pathname !== '/' || isPastHero;
 
   return (
     <nav
       aria-label="Hauptnavigation"
-      className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 select-none border-b transition-colors duration-300 ${
         isSolid
           ? 'border-hall-line bg-hall/95 backdrop-blur-md'
           : 'border-transparent bg-gradient-to-b from-hall/80 to-transparent'
@@ -53,9 +60,14 @@ const Navbar = () => {
         <Link
           to="/"
           onClick={() => pathname === '/' && window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="hidden md:block"
+          aria-hidden={!showWordmark}
+          tabIndex={showWordmark ? undefined : -1}
+          className={`hidden transition-[opacity,transform] duration-300 md:block ${
+            showWordmark ? 'translate-y-0 opacity-100' : 'pointer-events-none -translate-y-1 opacity-0'
+          }`}
         >
-          <img src={logo} alt="Tribute Night Laufenburg, Startseite" width="640" height="249" className="h-12 w-auto lg:h-14" />
+          <Wordmark className="text-[2.25rem] lg:text-[2.625rem]" />
+          <span className="sr-only"> Laufenburg, Startseite</span>
         </Link>
 
         <ul className="hidden items-center gap-7 lg:flex">

@@ -27,6 +27,8 @@ export default {
       fontFamily: {
         display: ['"Big Shoulders Display Variable"', 'Impact', 'sans-serif'],
         sans: ['"Archivo Variable"', 'system-ui', 'sans-serif'],
+        // Nur für den Schriftzug «Tribute Night» (Logo) und die Jubiläumszahl
+        brand: ['"Bebas Neue"', 'Impact', 'sans-serif'],
       },
       transitionTimingFunction: {
         'out-expo': 'cubic-bezier(0.16, 1, 0.3, 1)',
