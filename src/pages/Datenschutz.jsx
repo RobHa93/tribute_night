@@ -12,9 +12,9 @@ const Datenschutz = () => {
         <h2>Das Wichtigste in Kürze</h2>
         <p>
           Diese Website informiert über die Tribute Night Laufenburg und führt zum Ticketverkauf. Wir verwenden keine
-          Cookies, keine Analyse- oder Werbe-Tracker und keine Social-Media-Plugins. Karte und Videos laden erst, wenn
-          du sie anklickst. Personendaten bearbeiten wir nur, wenn du uns kontaktierst, und nur so weit, wie es für
-          deine Anfrage nötig ist.
+          Cookies, keine Analyse- oder Werbe-Tracker und keine Social-Media-Plugins. Auf der Seite Anreise ist eine
+          Karte von Google Maps eingebunden; die Videos im Line-up laden erst, wenn du sie anklickst. Personendaten
+          bearbeiten wir selbst nur, wenn du uns kontaktierst, und nur so weit, wie es für deine Anfrage nötig ist.
         </p>
       </section>
 
@@ -49,8 +49,11 @@ const Datenschutz = () => {
       <section>
         <h2>Karte auf der Seite Anreise</h2>
         <p>
-          Die Karte von Google Maps wird erst geladen, wenn du auf «Karte laden» klickst. Erst dann werden Daten wie
-          deine IP-Adresse an Google übermittelt, unter Umständen auch in die USA. Es gilt die{' '}
+          Auf der Seite Anreise ist eine Karte von Google Maps (Google Ireland Limited, Gordon House, Barrow Street,
+          Dublin 4, Irland) eingebunden, damit du den Weg zur Stadthalle findest. Beim Aufruf dieser Seite lädt dein
+          Browser die Karte direkt von Google. Dabei werden Daten wie deine IP-Adresse, Datum und Uhrzeit sowie
+          Angaben zum Browser an Google übermittelt, unter Umständen auch in die USA, und Google kann Cookies setzen.
+          Wir haben keinen Einfluss darauf, wie Google diese Daten bearbeitet. Es gilt die{' '}
           <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener noreferrer" className="link">
             Datenschutzerklärung von Google
           </a>
