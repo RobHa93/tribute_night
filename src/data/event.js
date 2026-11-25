@@ -140,11 +140,11 @@ export const SPONSORS = [];
 export const IMPRESSIONS = [
   { src: buehnePink, alt: 'Band auf der Bühne in pinkem Licht vor vollem Saal', width: 1500, height: 1001 },
   { src: buehneSw, alt: 'Schwarzweiss-Aufnahme der Bühne mit Lichtkegeln', width: 1250, height: 845 },
-  { src: barZapfhahn, alt: 'Helfer zapfen Bier an der Bar', width: 800, height: 534 },
   { src: lichterRot, alt: 'Rote Scheinwerfer über dem Publikum', width: 1225, height: 792 },
   { src: gitarreSw, alt: 'Nahaufnahme einer karierten E-Gitarre', width: 1240, height: 821 },
   { src: hallePublikum, alt: 'Publikum in der Stadthalle vor Konzertbeginn', width: 1500, height: 1037 },
   { src: buehneRot, alt: 'Band spielt unter roten und weissen Lichtstrahlen', width: 1500, height: 998 },
   { src: saengerSw, alt: 'Sänger und Gitarrist im Gegenlicht vor dem Publikum', width: 1600, height: 1067 },
+  { src: barZapfhahn, alt: 'Helfer zapfen Bier an der Bar', width: 800, height: 534 },
   { src: lichtpult, alt: 'Lichttechniker am Mischpult in blauem Licht', width: 1232, height: 825 },
 ];
